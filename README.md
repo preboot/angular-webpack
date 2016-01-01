@@ -11,7 +11,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Testing Angular 2 code with [Jasmine](http://jasmine.github.io/) and [Karma](http://karma-runner.github.io/).
 * Coverage with [Istanbul](https://github.com/gotwarlost/istanbul)
 * End-to-end Angular 2 code using [Protractor](https://angular.github.io/protractor/).
-* Stylesheets with [SASS](http://sass-lang.com/).
+* Stylesheets with [SASS](http://sass-lang.com/) (not required, it supports regular css too).
 * Error reported with [TSLint](http://palantir.github.io/tslint/).
 * Documentation with [TypeDoc](http://typedoc.io/).
 

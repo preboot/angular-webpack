@@ -107,12 +107,16 @@ module.exports = (function makeWebpackConfig() {
 
             // Support for CSS as raw text
             // use 'null' loader in test mode (https://github.com/webpack/null-loader)
+            // all css in src/style will be bundled in an external css file
             {test: /\.css$/, exclude: root('src','app'), loader: TEST ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')},
+            // all css required in src/app files will be merged in js files
             {test: /\.css$/, exclude: root('src', 'style'), loader: 'raw!postcss'},
 
             // support for .scss files
             // use 'null' loader in test mode (https://github.com/webpack/null-loader)
+            // all css in src/style will be bundled in an external css file
             {test: /\.scss$/, exclude: root('src', 'app'), loader: TEST ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')},
+            // all css required in src/app files will be merged in js files
             {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'},
 
             // support for .html as raw text
