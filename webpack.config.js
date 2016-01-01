@@ -14,8 +14,8 @@ module.exports = (function makeWebpackConfig() {
      * Environment type
      * BUILD is for generating minified builds
      */
-    var BUILD = args.indexOf('--webpack-build') !== -1;
-    var TEST = args.indexOf('--webpack-test') !== -1;
+    var BUILD = args.indexOf('--webpack-build') !== -1 || process.env['webpack-build'];
+    var TEST = args.indexOf('--webpack-test') !== -1 || process.env['webpack-test'];
 
     /**
      * Config
@@ -122,12 +122,8 @@ module.exports = (function makeWebpackConfig() {
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
     };
 
-    // ISPARTA LOADER
-    // Reference: https://github.com/ColCh/isparta-instrumenter-loader
-    // Instrument JS files with Isparta for subsequent code coverage reporting
-    // Skips node_modules and files that end with .spec.js
     if (TEST) {
-        // instrument only testing sources with Istanbul
+        // instrument only testing sources with Istanbul, covers js compiled files for now :-/
         config.module.postLoaders.push({
             test: /\.(js|ts)$/,
             include: path.resolve('src'),
