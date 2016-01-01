@@ -13,9 +13,8 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            {pattern: 'node_modules/es6-shim/es6-shim.js', watched: false},
-            {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', watched: false},
-            {pattern: './src/app/**/*.spec.ts', watched: true, included: true}
+            {pattern: './karma-shim.js', watched: false},
+            {pattern: './src/app/**/*.spec.ts', watched: true, included: false}
         ],
 
         // list of files to exclude
@@ -24,7 +23,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-             './src/app/**/*.spec.ts': ['webpack', 'sourcemap']
+             './karma-shim.js': ['webpack', 'sourcemap']
         },
 
         webpack: webpackConfig,

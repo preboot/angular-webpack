@@ -11,9 +11,6 @@ import {Component, provide} from 'angular2/core';
 import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 
-import {BrowserDomAdapter} from 'angular2/src/platform/browser/browser_adapter';
-BrowserDomAdapter.makeCurrent(); // in the test code
-
 // Load the implementations that should be tested
 import {Home} from './home';
 

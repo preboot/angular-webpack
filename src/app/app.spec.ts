@@ -10,9 +10,6 @@ import {
 import {Api} from './services/api/api';
 import {App} from './app';
 
-import {BrowserDomAdapter} from 'angular2/src/platform/browser/browser_adapter';
-BrowserDomAdapter.makeCurrent(); // in the test code
-
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEachProviders(() => [
