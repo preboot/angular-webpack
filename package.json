@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "angular-cli": "0.0.*",
+    "autoprefixer": "^6.2.3",
     "css-loader": "^0.23.0",
     "es6-module-loader": "^0.17.9",
     "exports-loader": "0.6.2",
