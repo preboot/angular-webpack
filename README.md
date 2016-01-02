@@ -1,7 +1,7 @@
 # ng2-webpack
 A simple starter for Angular 2 using webpack
 
-Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack demo](https://github.com/angular-tips/webpack-demo). 
+Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack demo](https://github.com/angular-tips/webpack-demo).
 
 
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
@@ -44,11 +44,14 @@ go to [http://localhost:3000](http://localhost:3000) in your browser
     * [Dependencies](#dependencies)
     * [Installing](#installing)
     * [Running the app](#running-the-app)
-    * [Add new components with Angular 2 cli](#add-new-components-with-angular-2-cli)
-* [Contributing](#contributing)
+    * [Developing](#developing)
+    * [Add new components with Angular 2 cli](#add-new-components-services-pipes-with-angular-2-cli)
+    * [Testing](#testing)
+    * [Documentation](#documentation)
 * [TypeScript](#typescript)
-* [Frequently asked questions](#frequently-asked-questions)
-* [Support, Questions, or Feedback](#support-questions-or-feedback)
+* [Frequently asked questions](#faq)
+* [Contributing](#contributing)
+* [Other Seed/Example Repos](#other-seed-and-example-repos)
 * [License](#license)
 
 # Getting Started
@@ -70,45 +73,50 @@ npm start
 
 It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
 
-## Add new components with Angular 2 cli
+
+## Developing
+
+### Add new components, services, pipes with Angular 2 cli
 * `npm install -g angular-cli` to install Angular 2 cli
 * Add a new component with: `ng generate component my-new-component`
 * Add a new service with: `ng generate service my-new-service`
 * Add a new pipe with: `ng generate pipe my-new-pipe`
 
+### Build files
 
-## Other commands
+* single run: `npm run build`
+* build files and watch: `npm run watch`
 
-### build files
-```bash
-npm run build
-```
+## Testing
 
-### build files and watch
-```bash
-npm run watch
-```
+#### 1. Unit Tests
 
-### run tests
-```bash
-npm test
-```
+* single run: `npm test`
+* live mode (TDD style): `npm run test-watch`
 
-### run webdriver (for end-to-end)
-```bash
-npm run webdriver-start
-```
+#### 2. End-to-End Tests (aka. e2e, integration)
 
-### run end-to-end tests
-```bash
-# make sure you have webdriver running and a server for the client app (using `npm start` before running the e2e tests for example)
-npm run e2e
-```
+* single run:
+  * in a tab, *if not already running!*: `npm start`
+  * in a new tab: `npm run webdriver-start`
+  * in another new tab: `npm run e2e`
+* interactive mode:
+  * instead of the last command above, you can run: `npm run e2e-live`
+  * when debugging or first writing test suites, you may find it helpful to try out Protractor commands without starting up the entire test suite. You can do this with the element explorer.
+  * you can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
-### generate documentation
+## Documentation
+
+You can generate api docs (using [TypeDoc](http://typedoc.io/)) for your code with the following:
 ```bash
 npm run docs
 ```
+
+# FAQ
+
+#### Coming Soon
+
+We will post common Q&A as they arise
 
 # TypeScript
 > To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
@@ -128,15 +136,22 @@ We have good experience using these editors:
 * [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
-# Support, Questions, or Feedback
-> Contact us anytime for anything about this repo or Angular 2
+# Contributing
 
-* [Chat: AngularClass.slack](http://angularclass.com/member-join/)
-* [Twitter: @AngularClass](https://twitter.com/AngularClass)
-* [Gitter: AngularClass/angular2-webpack-starter](https://gitter.im/angularclass/angular2-webpack-starter)
+**Please follow these basic steps to simplify pull request reviews:**
 
+* Please rebase your branch against the current master
+* Run ```npm install``` to make sure your development dependencies are up-to-date
+* Please ensure that the test suite passes ```npm test``` before submitting a PR
+* If you've added new functionality, **please** include tests which validate its behavior
+* Make reference to possible [issues](https://github.com/ocombe/ng2-webpack/issues) on PR comment
 
-# Other Seed/Starter/Example Repos
+### Submitting bug reports
+
+* Please detail the affected browser(s) and operating system(s)
+* Please be sure to state which version of node **and** npm you're using
+
+# Other Seed/Example Repos
 * [angular2-webpack-starter (AngularClass)](https://github.com/angularclass/angular2-webpack-starter)
   * Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine
 * [ng2-play (Pawel Kozlowski)](https://github.com/pkozlowski-opensource/ng2-play)
