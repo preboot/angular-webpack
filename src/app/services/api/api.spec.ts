@@ -12,14 +12,12 @@ import {
 import {provide} from 'angular2/core';
 import {Api} from './api';
 
-
 describe('Api Service', () => {
 
   beforeEachProviders(() => [Api]);
 
-
-  it('should ...', inject([Api], (service:Api) => {
-
+  it('should ...', inject([Api], (api:Api) => {
+    expect(api.title).toBe('Angular 2');
   }));
 
 });

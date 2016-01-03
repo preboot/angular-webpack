@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {Http} from 'angular2/http';
 
@@ -9,13 +9,13 @@ import {Http} from 'angular2/http';
     styles: [require('./home.css')],
     template: require('./home.html')
 })
-export class Home {
+export class Home implements OnInit {
     // TypeScript public modifiers
     constructor(public http: Http) {
     }
 
     ngOnInit() {
-        console.log('hello Home');
+        console.log('Hello Home');
     }
 
 }

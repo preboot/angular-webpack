@@ -27,7 +27,7 @@ import '../style/app.scss';
         <router-outlet></router-outlet>
     </main>
     <footer x-large>
-        WebPack Angular 2 Starter
+        Webpack Angular 2 Starter
     </footer>
   `
 })

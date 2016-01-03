@@ -36,7 +36,7 @@ describe('Home', () => {
     expect(console.log).not.toHaveBeenCalled();
 
     home.ngOnInit();
-    expect(console.log).toHaveBeenCalled();
+    expect(console.log).toHaveBeenCalledWith('Hello Home');
   }));
 
 });

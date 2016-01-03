@@ -17,7 +17,7 @@ describe('App', () => {
     Api
   ]);
 
-  it('should have an url', inject([ App ], (app) => {
+  it('should have an url', inject([ App ], (app: App) => {
     expect(app.url).toEqual('https://myapp.com');
   }));
 
