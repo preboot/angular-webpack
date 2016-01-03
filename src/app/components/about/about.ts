@@ -1,5 +1,4 @@
-import {Component} from 'angular2/core';
-
+import {Component, OnInit} from 'angular2/core';
 
 @Component({
     selector: 'about',
@@ -9,10 +8,14 @@ import {Component} from 'angular2/core';
     directives: [],
     pipes: []
 })
-export class About {
+export class About implements OnInit {
 
     constructor() {
         // Do stuff
+    }
+
+    ngOnInit() {
+        console.log('Hello Home');
     }
 
 }

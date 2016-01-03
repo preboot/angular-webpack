@@ -8,6 +8,7 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (function makeWebpackConfig() {
     /**
@@ -120,7 +121,8 @@ module.exports = (function makeWebpackConfig() {
             {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'},
 
             // support for .html as raw text
-            {test: /\.html$/, loader: 'html'}
+            // todo: change the loader to something that adds a hash to images
+            {test: /\.html$/, loader: 'raw'}
         ],
         postLoaders: [],
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
@@ -190,7 +192,13 @@ module.exports = (function makeWebpackConfig() {
             // Extract css files
             // Reference: https://github.com/webpack/extract-text-webpack-plugin
             // Disabled when in test mode or not in build mode
-            new ExtractTextPlugin('css/[name].css', {disable: !BUILD || TEST})
+            new ExtractTextPlugin('css/[name].css', {disable: !BUILD || TEST}),
+
+            // Copy assets from the public folder
+            // Reference: https://github.com/kevlened/copy-webpack-plugin
+            new CopyWebpackPlugin([{
+                from: root('src/public')
+            }])
         );
     }
 
