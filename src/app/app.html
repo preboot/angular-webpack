@@ -5,12 +5,13 @@
 	</nav>
 </header>
 <main>
-	<h1 class="title">Hello from {{api.title}} !</h1>
+	<h1 class="title">{{ 'HELLO' | translate }} from {{api.title}} !</h1>
 
+	<!-- Images (and assets) are parsed and loaded from within the public directory -->
 	<img src="/img/shield-with-beta.png">
 
 	<router-outlet></router-outlet>
 </main>
 <footer x-large>
-	Webpack Angular 2 Starter
+	<a href="{{ url }}">Webpack Angular 2 Starter</a>
 </footer>
