@@ -100,7 +100,7 @@ module.exports = (function makeWebpackConfig() {
             },
 
             // copy those assets to output
-            {test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=[path][name].[ext]?[hash]'},
+            {test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=[path][name].[ext]?[hash]'},
 
             // Support for *.json files.
             {test: /\.json$/, loader: 'json'},
@@ -120,7 +120,7 @@ module.exports = (function makeWebpackConfig() {
             {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'},
 
             // support for .html as raw text
-            {test: /\.html$/, loader: 'raw'}
+            {test: /\.html$/, loader: 'html'}
         ],
         postLoaders: [],
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]

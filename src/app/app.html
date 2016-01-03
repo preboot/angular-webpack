@@ -1,0 +1,16 @@
+<header>
+	<nav>
+		<a [routerLink]=" ['Home'] ">Home</a>
+		<a [routerLink]=" ['About'] ">About</a>
+	</nav>
+</header>
+<main>
+	<h1 class="title">Hello from {{api.title}} !</h1>
+
+	<img src="/img/shield-with-beta.png">
+
+	<router-outlet></router-outlet>
+</main>
+<footer x-large>
+	Webpack Angular 2 Starter
+</footer>
