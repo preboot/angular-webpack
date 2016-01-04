@@ -1,5 +1,5 @@
 # ng2-webpack
-A simple starter for Angular 2 using webpack
+A complete, yet simple, starter for Angular 2 using webpack
 
 Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack demo](https://github.com/angular-tips/webpack-demo).
 
