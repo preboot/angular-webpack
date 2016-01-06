@@ -1,7 +1,7 @@
 # ng2-webpack
 A complete, yet simple, starter for Angular 2 using webpack
 
-Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack demo](https://github.com/angular-tips/webpack-demo).
+Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack workflow](https://github.com/Foxandxss/angular-webpack-workflow).
 
 
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
