@@ -35,7 +35,7 @@ module.exports = (function makeWebpackConfig() {
     } else if (BUILD) {
         config.devtool = 'source-map';
     } else {
-        config.devtool = 'eval';
+        config.devtool = 'eval-source-map';
     }
 
     // add debug messages
