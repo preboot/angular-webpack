@@ -214,6 +214,9 @@ module.exports = (function makeWebpackConfig() {
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
             // Minify all javascript, switch loaders to minimizing mode
             new webpack.optimize.UglifyJsPlugin({
+                // disabled for beta.1 because it was breaking the build, todo: remove this once fixed
+                // reference: https://github.com/angular/angular/issues/6366
+                // reference: https://github.com/angular/angular/issues/6380
                 mangle: false
             }),
 
