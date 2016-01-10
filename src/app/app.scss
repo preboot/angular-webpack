@@ -1,3 +1,7 @@
+// styles applied on :host are applied on the current component, "app" in this case
+:host {
+    display: block;
+}
 header {
     background-color: #fff;
     padding: 16px;
