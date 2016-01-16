@@ -6,9 +6,6 @@ import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 // include for production builds
 // import {enableProdMode} from 'angular2/core';
 
-// Example of external lib
-import {TranslateService} from "ng2-translate/ng2-translate";
-
 /*
  * App Component
  * our top level component that holds all of our components
@@ -25,7 +22,6 @@ function main() {
         // These are dependencies of our App
         HTTP_PROVIDERS,
         ROUTER_PROVIDERS,
-        TranslateService, // this provider has been defined in bootstrap and will be the same for all components
         ELEMENT_PROBE_PROVIDERS // remove in production
     ])
         .catch(err => console.error(err));
