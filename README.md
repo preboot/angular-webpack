@@ -116,7 +116,20 @@ npm run docs
 
 #### How to include external angular 2 libraries ?
 
-It's simple, just add the lib to package.json and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/ocombe/ng2-webpack/blob/master/src/bootstrap.ts) of your application.
+It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/ocombe/ng2-webpack/blob/master/src/bootstrap.ts) of your application.
+
+### How to include external css files such as bootstrap.css ?
+
+Just install the lib and import the css files in [vendor.ts](https://github.com/ocombe/ng2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
+```sh
+npm install bootstrap@4.0.0
+```
+
+And in [vendor.ts](https://github.com/ocombe/ng2-webpack/blob/master/src/vendor.ts) add the following:
+```ts
+import 'bootstrap/dist/css/bootstrap.css';
+```
+
 
 # TypeScript
 > To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.

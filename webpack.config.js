@@ -111,7 +111,7 @@ module.exports = (function makeWebpackConfig() {
             // all css in src/style will be bundled in an external css file
             {test: /\.css$/, exclude: root('src','app'), loader: TEST ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')},
             // all css required in src/app files will be merged in js files
-            {test: /\.css$/, exclude: root('src', 'style'), loader: 'raw!postcss'},
+            {test: /\.css$/, include: root('src', 'app'), loader: 'raw!postcss'},
 
             // support for .scss files
             // use 'null' loader in test mode (https://github.com/webpack/null-loader)
