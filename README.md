@@ -122,7 +122,7 @@ It's simple, just install the lib via npm and import it in your code when you ne
 
 Just install the lib and import the css files in [vendor.ts](https://github.com/ocombe/ng2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
 ```sh
-npm install bootstrap@4.0.0
+npm install bootstrap@4.0.0 --save
 ```
 
 And in [vendor.ts](https://github.com/ocombe/ng2-webpack/blob/master/src/vendor.ts) add the following:
