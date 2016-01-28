@@ -22,5 +22,8 @@ appContext.keys().forEach(appContext);
 
 // Select BrowserDomAdapter.
 // see https://github.com/AngularClass/angular2-webpack-starter/issues/124
-var domAdapter = require('angular2/src/platform/browser/browser_adapter');
-domAdapter.BrowserDomAdapter.makeCurrent();
+// Somewhere in the test setup
+var testing = require('angular2/testing');
+var browser = require('angular2/platform/testing/browser');
+
+testing.setBaseTestProviders(browser.TEST_BROWSER_PLATFORM_PROVIDERS, browser.TEST_BROWSER_APPLICATION_PROVIDERS);

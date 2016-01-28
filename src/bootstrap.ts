@@ -1,3 +1,6 @@
+// jasmine typings to avoid warnings in beta.2
+/// <reference path="../node_modules/angular2/typings/jasmine/jasmine.d.ts"/>
+
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
