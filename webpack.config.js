@@ -1,7 +1,6 @@
 // Helper: root(), and rootDir() are defined at the bottom
 var path = require('path');
 var webpack = require('webpack');
-var args = process.argv.slice(2);
 
 // Webpack Plugins
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
@@ -10,14 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = (function makeWebpackConfig() {
-    /**
-     * Environment type
-     * BUILD is for generating minified builds
-     */
-    var BUILD = args.indexOf('--webpack-build') !== -1 || process.env['webpack-build'];
-    var TEST = args.indexOf('--webpack-test') !== -1 || process.env['webpack-test'];
-
+module.exports = function makeWebpackConfig(ENV) {
     /**
      * Config
      * Reference: http://webpack.github.io/docs/configuration.html
@@ -30,22 +22,22 @@ module.exports = (function makeWebpackConfig() {
      * Reference: http://webpack.github.io/docs/configuration.html#devtool
      * Type of sourcemap to use per build type
      */
-    if (TEST) {
+    if(ENV === 'test') {
         config.devtool = 'inline-source-map';
-    } else if (BUILD) {
+    } else if(ENV === 'prod') {
         config.devtool = 'source-map';
     } else {
         config.devtool = 'eval-source-map';
     }
 
     // add debug messages
-    config.debug = !BUILD || !TEST;
+    config.debug = ENV !== 'prod' || ENV !== 'test';
 
     /**
      * Entry
      * Reference: http://webpack.github.io/docs/configuration.html#entry
      */
-    config.entry = TEST ? {} : {
+    config.entry = ENV === 'test' ? {} : {
         'vendor': './src/vendor.ts',
         'app': './src/bootstrap.ts' // our angular app
     };
@@ -54,11 +46,11 @@ module.exports = (function makeWebpackConfig() {
      * Output
      * Reference: http://webpack.github.io/docs/configuration.html#output
      */
-    config.output = TEST ? {} : {
+    config.output = ENV === 'test' ? {} : {
         path: root('dist'),
         publicPath: '/',
         filename: 'js/[name].js',
-        chunkFilename: BUILD ? '[id].chunk.js?[hash]' : '[id].chunk.js'
+        chunkFilename: ENV === 'prod' ? '[id].chunk.js?[hash]' : '[id].chunk.js'
     };
 
     /**
@@ -66,7 +58,7 @@ module.exports = (function makeWebpackConfig() {
      * Reference: http://webpack.github.io/docs/configuration.html#resolve
      */
     config.resolve = {
-        cache: !TEST,
+        cache: ENV !== 'test',
         root: root(),
         // only discover files that have those extensions
         extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
@@ -83,7 +75,7 @@ module.exports = (function makeWebpackConfig() {
      * This handles most of the magic responsible for converting modules
      */
     config.module = {
-        preLoaders: TEST ? [] : [{test: /\.ts$/, loader: 'tslint'}],
+        preLoaders: ENV === 'test' ? [] : [{test: /\.ts$/, loader: 'tslint'}],
         loaders: [
             // Support for .ts files.
             {
@@ -97,7 +89,7 @@ module.exports = (function makeWebpackConfig() {
                         2375  // 2375 -> Duplicate string index signature
                     ]
                 },
-                exclude: [TEST ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
+                exclude: [ENV === 'test' ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
             },
 
             // copy those assets to output
@@ -109,14 +101,22 @@ module.exports = (function makeWebpackConfig() {
             // Support for CSS as raw text
             // use 'null' loader in test mode (https://github.com/webpack/null-loader)
             // all css in src/style will be bundled in an external css file
-            {test: /\.css$/, exclude: root('src','app'), loader: TEST ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')},
+            {
+                test: /\.css$/,
+                exclude: root('src', 'app'),
+                loader: ENV === 'test' ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+            },
             // all css required in src/app files will be merged in js files
             {test: /\.css$/, include: root('src', 'app'), loader: 'raw!postcss'},
 
             // support for .scss files
             // use 'null' loader in test mode (https://github.com/webpack/null-loader)
             // all css in src/style will be bundled in an external css file
-            {test: /\.scss$/, exclude: root('src', 'app'), loader: TEST ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')},
+            {
+                test: /\.scss$/,
+                exclude: root('src', 'app'),
+                loader: ENV === 'test' ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
+            },
             // all css required in src/app files will be merged in js files
             {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'},
 
@@ -128,7 +128,7 @@ module.exports = (function makeWebpackConfig() {
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
     };
 
-    if (TEST) {
+    if(ENV === 'test') {
         // instrument only testing sources with Istanbul, covers js compiled files for now :-/
         config.module.postLoaders.push({
             test: /\.(js|ts)$/,
@@ -143,10 +143,19 @@ module.exports = (function makeWebpackConfig() {
      * Reference: http://webpack.github.io/docs/configuration.html#plugins
      * List: http://webpack.github.io/docs/list-of-plugins.html
      */
-    config.plugins = [];
+    config.plugins = [
+        // Define env variables to help with builds
+        // Reference: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+        new webpack.DefinePlugin({
+            // Environment helpers
+            'process.env': {
+               ENV: JSON.stringify(ENV)
+            }
+        })
+    ];
 
 
-    if(!TEST) {
+    if(ENV !== 'test') {
         config.plugins.push(
             // Generate common chunks if necessary
             // Reference: https://webpack.github.io/docs/code-splitting.html
@@ -192,12 +201,12 @@ module.exports = (function makeWebpackConfig() {
             // Extract css files
             // Reference: https://github.com/webpack/extract-text-webpack-plugin
             // Disabled when in test mode or not in build mode
-            new ExtractTextPlugin('css/[name].css', {disable: !BUILD || TEST})
+            new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'prod' || ENV === 'test'})
         );
     }
 
     // Add build specific plugins
-    if(BUILD) {
+    if(ENV === 'prod') {
         config.plugins.push(
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
             // Only emit files when there are no errors
@@ -207,9 +216,9 @@ module.exports = (function makeWebpackConfig() {
             // Dedupe modules in the output
             new webpack.optimize.DedupePlugin(),
 
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#occurenceorderplugin
+            // Reference: http://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
             // Assign the module and chunk ids by occurrence count.
-            new webpack.optimize.OccurenceOrderPlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin(),
 
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
             // Minify all javascript, switch loaders to minimizing mode
@@ -263,7 +272,7 @@ module.exports = (function makeWebpackConfig() {
     };
 
     return config;
-})();
+};
 
 // Helper functions
 function root(args) {

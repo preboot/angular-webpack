@@ -1,13 +1,18 @@
 // jasmine typings to avoid warnings in beta.2
 /// <reference path="../node_modules/angular2/typings/jasmine/jasmine.d.ts"/>
 
-import {bootstrap} from 'angular2/platform/browser';
-import {ROUTER_PROVIDERS} from 'angular2/router';
+import {enableProdMode, provide} from "angular2/core";
+import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
+import {ROUTER_PROVIDERS, HashLocationStrategy, LocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
-// include for development builds
-import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
-// include for production builds
-// import {enableProdMode} from 'angular2/core';
+
+const ENV_PROVIDERS = [];
+// depending on the env mode, enable prod mode or add debugging modules
+if(process.env.ENV === 'prod') {
+    enableProdMode();
+} else {
+    ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
+}
 
 /*
  * App Component
@@ -19,15 +24,13 @@ import {App} from './app/app';
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-// enableProdMode() // include for production builds
-function main() {
+document.addEventListener('DOMContentLoaded', function main() {
     return bootstrap(App, [
         // These are dependencies of our App
-        HTTP_PROVIDERS,
-        ROUTER_PROVIDERS,
-        ELEMENT_PROBE_PROVIDERS // remove in production
+        ...HTTP_PROVIDERS,
+        ...ROUTER_PROVIDERS,
+        ...ENV_PROVIDERS,
+        provide(LocationStrategy, {useClass: HashLocationStrategy}) // use #/ routes, remove this for HTML5 mode
     ])
-        .catch(err => console.error(err));
-}
-
-document.addEventListener('DOMContentLoaded', main);
+    .catch(err => console.error(err));
+});
