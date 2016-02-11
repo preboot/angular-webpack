@@ -15,7 +15,7 @@ export class About implements OnInit {
     }
 
     ngOnInit() {
-        console.log('Hello Home');
+        console.log('Hello About');
     }
 
 }
