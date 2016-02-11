@@ -201,7 +201,7 @@ module.exports = function makeWebpackConfig(ENV) {
             // Extract css files
             // Reference: https://github.com/webpack/extract-text-webpack-plugin
             // Disabled when in test mode or not in build mode
-            new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'prod' || ENV === 'test'})
+            new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'prod'})
         );
     }
 
