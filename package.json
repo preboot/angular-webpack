@@ -32,6 +32,7 @@
   "devDependencies": {
     "angular-cli": "0.0.*",
     "autoprefixer": "^6.3.2",
+    "awesome-typescript-loader": "^0.15.10",
     "copy-webpack-plugin": "^1.1.1",
     "css-loader": "^0.23.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -62,7 +63,7 @@
     "tslint": "^3.3.0",
     "tslint-loader": "^2.1.0",
     "typedoc": "^0.3.12",
-    "typescript": "^1.7.3",
+    "typescript": "^1.7.5",
     "url-loader": "^0.5.6",
     "webpack": "^2.0.7-beta",
     "webpack-dev-server": "^2.0.0-beta"

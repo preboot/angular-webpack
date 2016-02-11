@@ -8,6 +8,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = function makeWebpackConfig(ENV) {
     /**
@@ -80,7 +81,7 @@ module.exports = function makeWebpackConfig(ENV) {
             // Support for .ts files.
             {
                 test: /\.ts$/,
-                loader: 'ts',
+                loader: 'awesome-typescript',
                 query: {
                     'ignoreDiagnostics': [
                         2403, // 2403 -> Subsequent variable declarations
@@ -151,7 +152,9 @@ module.exports = function makeWebpackConfig(ENV) {
             'process.env': {
                ENV: JSON.stringify(ENV)
             }
-        })
+        }),
+
+        new ForkCheckerPlugin()
     ];
 
 
