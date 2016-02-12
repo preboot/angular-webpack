@@ -19,15 +19,15 @@
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.ts",
     "start": "npm run server",
-    "postinstall": "npm run webdriver-update"
+    "postinstall": "npm run webdriver-update && typings install"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.3",
+    "angular2": "2.0.0-beta.6",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.11"
+    "zone.js": "0.5.14"
   },
   "devDependencies": {
     "angular-cli": "0.0.*",
@@ -63,6 +63,7 @@
     "tslint-loader": "^2.1.0",
     "typedoc": "^0.3.12",
     "typescript": "^1.7.3",
+    "typings": "^0.6.8",
     "url-loader": "^0.5.6",
     "webpack": "^2.0.7-beta",
     "webpack-dev-server": "^2.0.0-beta"
