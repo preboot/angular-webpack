@@ -1,5 +1,4 @@
-// jasmine typings to avoid warnings in beta.2
-/// <reference path="../node_modules/angular2/typings/jasmine/jasmine.d.ts"/>
+/// <reference path="../typings/main.d.ts"/>
 
 import {enableProdMode, provide} from "angular2/core";
 import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
