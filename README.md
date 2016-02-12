@@ -1,4 +1,4 @@
-# ng2-webpack
+# angular2-webpack
 A complete, yet simple, starter for Angular 2 using webpack 2
 
 Inspired by [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter) & [Angular 1 Webpack workflow](https://github.com/Foxandxss/angular-webpack-workflow).
@@ -26,10 +26,10 @@ Warning: Make sure you're using the latest version of Node.js and NPM
 
 ```bash
 # clone our repo
-git clone https://github.com/ocombe/ng2-webpack.git
+git clone https://github.com/preboot/angular2-webpack.git
 
 # change directory to our repo
-cd ng2-webpack
+cd angular2-webpack
 
 # install the repo with npm
 npm install
@@ -116,16 +116,16 @@ npm run docs
 
 #### How to include external angular 2 libraries ?
 
-It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/ocombe/ng2-webpack/blob/master/src/bootstrap.ts) of your application.
+It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/preboot/angular2-webpack/blob/master/src/bootstrap.ts) of your application.
 
 ### How to include external css files such as bootstrap.css ?
 
-Just install the lib and import the css files in [vendor.ts](https://github.com/ocombe/ng2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
+Just install the lib and import the css files in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
 ```sh
 npm install bootstrap@4.0.0 --save
 ```
 
-And in [vendor.ts](https://github.com/ocombe/ng2-webpack/blob/master/src/vendor.ts) add the following:
+And in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts) add the following:
 ```ts
 import 'bootstrap/dist/css/bootstrap.css';
 ```
@@ -157,7 +157,7 @@ We have good experience using these editors:
 * Run ```npm install``` to make sure your development dependencies are up-to-date
 * Please ensure that the test suite passes ```npm test``` before submitting a PR
 * If you've added new functionality, **please** include tests which validate its behavior
-* Make reference to possible [issues](https://github.com/ocombe/ng2-webpack/issues) on PR comment
+* Make reference to possible [issues](https://github.com/preboot/angular2-webpack/issues) on PR comment
 
 ### Submitting bug reports
 
