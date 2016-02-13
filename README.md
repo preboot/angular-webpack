@@ -1,5 +1,7 @@
 # angular2-webpack
 
+[![Dependency Status](https://david-dm.org/preboot/angular2-webpack/status.svg)](https://david-dm.org/preboot/angular2-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular2-webpack/dev-status.svg)](https://david-dm.org/preboot/angular2-webpack#info=devDependencies)
+
 A complete, yet simple, starter for Angular 2 using webpack 2.
 
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
@@ -46,10 +48,8 @@ go to [http://localhost:3000](http://localhost:3000) in your browser
     * [Add new components with Angular 2 cli](#add-new-components-services-pipes-with-angular-2-cli)
     * [Testing](#testing)
     * [Documentation](#documentation)
-* [TypeScript](#typescript)
 * [Frequently asked questions](#faq)
-* [Contributing](#contributing)
-* [Other Seed/Example Repos](#other-seed-and-example-repos)
+* [TypeScript](#typescript)
 * [License](#license)
 
 # Getting Started
@@ -74,7 +74,6 @@ npm start
 ```
 
 It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
-
 
 ## Developing
 
@@ -137,7 +136,6 @@ And in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/v
 import 'bootstrap/dist/css/bootstrap.css';
 ```
 
-
 # TypeScript
 
 > To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
@@ -159,35 +157,6 @@ We have good experience using these editors:
 * [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
-# Contributing
-
-**Please follow these basic steps to simplify pull request reviews:**
-
-* Please rebase your branch against the current master.
-* Run `npm install` to make sure your development dependencies are up-to-date.
-* Please ensure that the test suite passes `npm test` before submitting a PR.
-* If you've added new functionality, **please** include tests which validate its behavior.
-* Make reference to possible [issues](https://github.com/preboot/angular2-webpack/issues) on PR comment.
-
-### Submitting bug reports
-
-* Please detail the affected browser(s) and operating system(s).
-* Please be sure to state which version of node **and** npm you're using.
-
-# Other Seed/Example Repos
-
-* [angular2-webpack-starter (AngularClass)](https://github.com/angularclass/angular2-webpack-starter)
-  * Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine
-* [ng2-play (Pawel Kozlowski)](https://github.com/pkozlowski-opensource/ng2-play)
-  * Client only, Minimalist, SystemJS, Gulp, TypeScript
-* [angular2-seed (Minko Gechev)](https://github.com/mgechev/angular2-seed)
-  * Client only, SystemJS, Gulp, TypeScript, TSD, Versioned, Env Dev/Prod
-* [ng2-lab (Roland Groza)](https://github.com/rolandjitsu/ng2-lab)
-  * Client only, ES6, TypeScript, Firebase, Gulp, Ci, TSD, TSLint
-* [ng2-jspm-seed (Rob Wormald)](https://github.com/robwormald/ng2-jspm-seed)
-  * Client only, TypeScript, TSD, Gulp, JSPM, Minimalist
-* [babel-angular2-app (Shuhei Kagawa)](https://github.com/shuhei/babel-angular2-app)
-  * Client only, Minimalist, Babel, ES6+, browserify
-
 # License
- [MIT](/LICENSE)
+
+[MIT](/LICENSE)
