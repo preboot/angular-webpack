@@ -139,15 +139,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 # TypeScript
 
-> To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
-
-## Use latest TypeScript compiler
-
-TypeScript 1.7.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
-
-```bash
-npm install --global typescript
-```
+> To take full advantage of TypeScript with autocomplete you would have to use an editor with the correct TypeScript plugins.
 
 ## Use a TypeScript-aware editor
 
