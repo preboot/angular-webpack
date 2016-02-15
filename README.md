@@ -25,18 +25,18 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 
 ```bash
 # clone our repo
-$ git clone https://github.com/preboot/angular2-webpack.git
+$ git clone https://github.com/preboot/angular2-webpack.git my-app
 
-# change directory to our repo
-$ cd angular2-webpack
+# change directory to your app
+$ cd my-app
 
-# install the repo with npm
+# install the dependencies with npm
 $ npm install
 
 # start the server
 $ npm start
 ```
-go to [http://localhost:3000](http://localhost:3000) in your browser
+go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 # Table of Contents
 
@@ -69,11 +69,12 @@ What you need to run this app:
 ## Running the app
 
 After you have installed all dependencies you can now run the app with:
+
 ```bash
 npm start
 ```
 
-It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
+It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:3000`.
 
 ## Developing
 
