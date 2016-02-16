@@ -9,7 +9,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = function makeWebpackConfig(ENV) {
+/**
+ * Env
+ * Get npm lifecycle event to identify the environment
+ */
+var ENV = process.env.npm_lifecycle_event;
+
+module.exports = function makeWebpackConfig() {
     /**
      * Config
      * Reference: http://webpack.github.io/docs/configuration.html
@@ -24,14 +30,14 @@ module.exports = function makeWebpackConfig(ENV) {
      */
     if(ENV === 'test') {
         config.devtool = 'inline-source-map';
-    } else if(ENV === 'prod') {
+    } else if(ENV === 'build') {
         config.devtool = 'source-map';
     } else {
         config.devtool = 'eval-source-map';
     }
 
     // add debug messages
-    config.debug = ENV !== 'prod' || ENV !== 'test';
+    config.debug = ENV !== 'build' || ENV !== 'test';
 
     /**
      * Entry
@@ -50,7 +56,7 @@ module.exports = function makeWebpackConfig(ENV) {
         path: root('dist'),
         publicPath: '/',
         filename: 'js/[name].js',
-        chunkFilename: ENV === 'prod' ? '[id].chunk.js?[hash]' : '[id].chunk.js'
+        chunkFilename: ENV === 'build' ? '[id].chunk.js?[hash]' : '[id].chunk.js'
     };
 
     /**
@@ -202,12 +208,12 @@ module.exports = function makeWebpackConfig(ENV) {
             // Extract css files
             // Reference: https://github.com/webpack/extract-text-webpack-plugin
             // Disabled when in test mode or not in build mode
-            new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'prod'})
+            new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'build'})
         );
     }
 
     // Add build specific plugins
-    if(ENV === 'prod') {
+    if(ENV === 'build') {
         config.plugins.push(
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
             // Only emit files when there are no errors
@@ -273,7 +279,7 @@ module.exports = function makeWebpackConfig(ENV) {
     };
 
     return config;
-};
+}();
 
 // Helper functions
 function root(args) {
