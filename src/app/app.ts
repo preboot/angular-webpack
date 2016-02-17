@@ -13,20 +13,20 @@ import {About} from "./components/about/about";
  * Top Level Component
  */
 @Component({
-    selector: 'app', // <app></app>
-    providers: [...FORM_PROVIDERS, Api],
-    directives: [...ROUTER_DIRECTIVES],
-    pipes: [],
-    styles: [require('./app.scss')],
-    template: require('./app.html')
+  selector: 'app', // <app></app>
+  providers: [...FORM_PROVIDERS, Api],
+  directives: [...ROUTER_DIRECTIVES],
+  pipes: [],
+  styles: [require('./app.scss')],
+  template: require('./app.html')
 })
 @RouteConfig([
-    {path: '/', component: Home, name: 'Home'},
-    {path: '/About', component: About, name: 'About'}
+  {path: '/', component: Home, name: 'Home'},
+  {path: '/About', component: About, name: 'About'}
 ])
 export class App {
-    url: string = 'https://github.com/ocombe/ng2-webpack';
+  url:string = 'https://github.com/ocombe/ng2-webpack';
 
-    constructor(public api: Api) {
-    }
+  constructor(public api:Api) {
+  }
 }

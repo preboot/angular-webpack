@@ -7,10 +7,10 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 
 const ENV_PROVIDERS = [];
 // depending on the env mode, enable prod mode or add debugging modules
-if(process.env.ENV === 'prod') {
-    enableProdMode();
+if (process.env.ENV === 'prod') {
+  enableProdMode();
 } else {
-    ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
+  ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
 }
 
 /*
@@ -24,12 +24,12 @@ import {App} from './app/app';
  * our Services and Providers into Angular's dependency injection
  */
 document.addEventListener('DOMContentLoaded', function main() {
-    return bootstrap(App, [
-        // These are dependencies of our App
-        ...HTTP_PROVIDERS,
-        ...ROUTER_PROVIDERS,
-        ...ENV_PROVIDERS,
-        provide(LocationStrategy, {useClass: HashLocationStrategy}) // use #/ routes, remove this for HTML5 mode
-    ])
-    .catch(err => console.error(err));
+  return bootstrap(App, [
+    // These are dependencies of our App
+    ...HTTP_PROVIDERS,
+    ...ROUTER_PROVIDERS,
+    ...ENV_PROVIDERS,
+    provide(LocationStrategy, {useClass: HashLocationStrategy}) // use #/ routes, remove this for HTML5 mode
+  ])
+  .catch(err => console.error(err));
 });

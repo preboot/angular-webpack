@@ -1,21 +1,21 @@
 import {
-    it,
-    describe,
-    injectAsync,
-    TestComponentBuilder,
-    beforeEachProviders
+  it,
+  describe,
+  injectAsync,
+  TestComponentBuilder,
+  beforeEachProviders
 } from 'angular2/testing';
-import {About} from './about';
 
+import {About} from './about';
 
 describe('About Component', () => {
 
-    beforeEachProviders(() => []);
+  beforeEachProviders(() => []);
 
-    it('should ...', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.createAsync(About).then((fixture) => {
-            fixture.detectChanges();
-        });
-    }));
+  it('should ...', injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
+    return tcb.createAsync(About).then((fixture) => {
+      fixture.detectChanges();
+    });
+  }));
 
 });
