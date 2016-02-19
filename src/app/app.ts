@@ -25,8 +25,8 @@ import {About} from "./components/about/about";
   {path: '/About', component: About, name: 'About'}
 ])
 export class App {
-  url:string = 'https://github.com/ocombe/ng2-webpack';
+  url: string = 'https://github.com/ocombe/ng2-webpack';
 
-  constructor(public api:Api) {
+  constructor(public api: Api) {
   }
 }
