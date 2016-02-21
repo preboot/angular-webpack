@@ -274,8 +274,9 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
   config.devServer = {
+    contentBase: './src/public',
     historyApiFallback: true,
-    contentBase: './src/public'
+    stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
   };
 
   return config;
