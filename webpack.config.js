@@ -179,12 +179,12 @@ module.exports = function makeWebpackConfig() {
         chunks: ['app', 'vendor']
       }),
 
-      // Inject paths into html files
+      // Inject script and link tags into html files
       // Reference: https://github.com/ampedandwired/html-webpack-plugin
       new HtmlWebpackPlugin({
         template: './src/public/index.html',
         inject: 'body',
-        hash: true, // inject ?hash at the end of the files
+        hash: true, // inject ?hash at the end of the files (Each generated bundle receives a new hash)
         chunksSortMode: function compare(a, b) {
           // common always first
           if (a.names[0] === 'common') {
