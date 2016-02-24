@@ -55,8 +55,8 @@ module.exports = function makeWebpackConfig() {
   config.output = ENV === 'test' ? {} : {
     path: root('dist'),
     publicPath: '/',
-    filename: 'js/[name].js',
-    chunkFilename: ENV === 'build' ? '[id].chunk.js?[hash]' : '[id].chunk.js'
+    filename: ENV === 'build' ? 'js/[name].[hash].js' : 'js/[name].js',
+    chunkFilename: ENV === 'build' ? '[id].[hash].chunk.js' : '[id].chunk.js'
   };
 
   /**
@@ -169,12 +169,12 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
       new CommonsChunkPlugin({
         name: 'vendor',
-        filename: 'js/[name].js',
+        filename: ENV === 'build' ? 'js/[name].[hash].js' : 'js/[name].js',
         minChunks: Infinity
       }),
       new CommonsChunkPlugin({
         name: 'common',
-        filename: 'js/[name].js',
+        filename: ENV === 'build' ? 'js/[name].[hash].js' : 'js/[name].js',
         minChunks: 2,
         chunks: ['app', 'vendor']
       }),
@@ -184,7 +184,6 @@ module.exports = function makeWebpackConfig() {
       new HtmlWebpackPlugin({
         template: './src/public/index.html',
         inject: 'body',
-        hash: true, // inject ?hash at the end of the files (Each generated bundle receives a new hash)
         chunksSortMode: function compare(a, b) {
           // common always first
           if (a.names[0] === 'common') {
@@ -208,7 +207,7 @@ module.exports = function makeWebpackConfig() {
       // Extract css files
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'build'})
+      new ExtractTextPlugin('css/[name].[hash].css', {disable: ENV !== 'build'})
     );
   }
 
