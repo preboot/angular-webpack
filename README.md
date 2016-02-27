@@ -119,6 +119,10 @@ npm run docs
 
 # FAQ
 
+#### Do I need to add script / link tags into index.html ?
+
+No, Webpack will add all the needed Javascript bundles as script tags and all the CSS files as link tags. The advantage is that you don't need to modify the index.html everytime you build your solution to update the hashes.
+
 #### How to include external angular 2 libraries ?
 
 It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/preboot/angular2-webpack/blob/master/src/bootstrap.ts) of your application.
