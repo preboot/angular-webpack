@@ -35,5 +35,15 @@ describe('App', () => {
     expect(app.url).toEqual('https://github.com/ocombe/ng2-webpack');
   }));
 
+  describe('pipes', function() {});
+
+  describe('services', function() {
+    require('./services/api/spec');
+  });
+
+  describe('subcomponents', function() {
+    require('./components/home/spec');
+    require('./components/about/spec');
+  })
 
 });
