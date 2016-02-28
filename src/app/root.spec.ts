@@ -1,5 +1,8 @@
 import {
   it,
+  fit,
+  describe,
+  fdescribe,
   inject,
   injectAsync,
   beforeEachProviders,
@@ -12,8 +15,8 @@ import {MockBackend} from 'angular2/http/testing';
 import {provide} from "angular2/core";
 
 // Load the implementations that should be tested
-import {Api} from './services/api/api';
-import {App} from './app';
+import {Api} from './services/api/index';
+import {App} from './index';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
@@ -34,5 +37,16 @@ describe('App', () => {
   it('should have an url', inject([App], (app:App) => {
     expect(app.url).toEqual('https://github.com/ocombe/ng2-webpack');
   }));
+
+  describe('pipes', function() {});
+
+  describe('services', function() {
+    require('./services/api/spec');
+  });
+
+  describe('subcomponents', function() {
+    require('./components/home/spec');
+    require('./components/about/spec');
+  })
 
 });

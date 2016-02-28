@@ -4,9 +4,9 @@ import {FORM_PROVIDERS} from 'angular2/common';
 
 import '../style/app.scss';
 
-import {Api} from './services/api/api';
-import {Home} from './components/home/home';
-import {About} from "./components/about/about";
+import {Api} from './services/api/index';
+import {Home} from './components/home/index';
+import {About} from "./components/about/index";
 
 /*
  * App Component
@@ -17,8 +17,8 @@ import {About} from "./components/about/about";
   providers: [...FORM_PROVIDERS, Api],
   directives: [...ROUTER_DIRECTIVES],
   pipes: [],
-  styles: [require('./app.scss')],
-  template: require('./app.html')
+  styles: [require('./style.scss')],
+  template: require('./index.html')
 })
 @RouteConfig([
   {path: '/', component: Home, name: 'Home'},
