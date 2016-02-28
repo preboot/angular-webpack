@@ -13,7 +13,7 @@ import {provide} from "angular2/core";
 
 // Load the implementations that should be tested
 import {Api} from './services/api/api';
-import {App} from './app';
+import {App} from './index';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
