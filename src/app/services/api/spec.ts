@@ -1,6 +1,8 @@
 import {
   it,
+  fit,
   describe,
+  ddescribe,
   expect,
   inject,
   beforeEachProviders

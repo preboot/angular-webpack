@@ -1,5 +1,8 @@
 import {
   it,
+  fit,
+  describe,
+  fdescribe,
   inject,
   injectAsync,
   beforeEachProviders,
