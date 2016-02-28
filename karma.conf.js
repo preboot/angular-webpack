@@ -14,7 +14,7 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       {pattern: './karma-shim.js', watched: false},
-      {pattern: './src/app/**/*.spec.ts', watched: true, included: false}
+      {pattern: './src/app/*spec.ts', watched: true, included: false}
     ],
 
     // list of files to exclude

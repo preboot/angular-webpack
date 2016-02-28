@@ -5,7 +5,7 @@ import {
   inject,
   beforeEachProviders
 } from 'angular2/testing';
-import {Api} from './api';
+import {Api} from './index';
 
 describe('Api Service', () => {
 

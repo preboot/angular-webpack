@@ -12,7 +12,7 @@ import {MockBackend} from 'angular2/http/testing';
 import {provide} from "angular2/core";
 
 // Load the implementations that should be tested
-import {Api} from './services/api/api';
+import {Api} from './services/api/index';
 import {App} from './index';
 
 describe('App', () => {
@@ -34,5 +34,6 @@ describe('App', () => {
   it('should have an url', inject([App], (app:App) => {
     expect(app.url).toEqual('https://github.com/ocombe/ng2-webpack');
   }));
+
 
 });

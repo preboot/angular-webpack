@@ -6,7 +6,7 @@ import {
 } from 'angular2/testing';
 
 // Load the implementations that should be tested
-import {Home} from './home';
+import {Home} from './index';
 
 describe('Home', () => {
   // provide our implementations or mocks to the dependency injector

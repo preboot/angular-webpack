@@ -6,7 +6,7 @@ import {
   beforeEachProviders
 } from 'angular2/testing';
 
-import {About} from './about';
+import {About} from './index';
 
 describe('About Component', () => {
 
