@@ -1,4 +1,7 @@
 // Polyfills
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+
 // fixes for non ES6 browsers (IE, safari, ...)
 import 'es6-shim/es6-shim.js';
 // todo remove once https://github.com/angular/angular/issues/6501 is fixed.
