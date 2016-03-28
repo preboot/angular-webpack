@@ -3,7 +3,6 @@
 import 'es6-shim/es6-shim.js';
 // todo remove once https://github.com/angular/angular/issues/6501 is fixed.
 import './shims/shims_for_IE.js';
-import 'angular2/bundles/angular2-polyfills.js';
 
 // Angular 2
 import 'angular2/platform/browser';

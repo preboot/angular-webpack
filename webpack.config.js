@@ -209,7 +209,15 @@ module.exports = function makeWebpackConfig() {
       // Extract css files
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('css/[name].[hash].css', {disable: !isProd})
+      new ExtractTextPlugin('css/[name].[hash].css', {disable: !isProd}),
+      
+      // Copy angular2-polyfills to the output
+      // Reference: https://github.com/angular/angular/blob/master/modules/angular2/docs/bundles/overview.md
+      // Reference: https://github.com/kevlened/copy-webpack-plugin
+      new CopyWebpackPlugin([{
+        from: root('node_modules/angular2/bundles/angular2-polyfills.js'),
+        to: 'polyfills/'
+      }])
     );
   }
 
