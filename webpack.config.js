@@ -56,7 +56,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.output = isTest ? {} : {
     path: root('dist'),
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '.' : 'http://localhost:8080/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
   };
@@ -210,7 +210,7 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Disabled when in test mode or not in build mode
       new ExtractTextPlugin('css/[name].[hash].css', {disable: !isProd}),
-      
+
       // Copy angular2-polyfills to the output
       // Reference: https://github.com/angular/angular/blob/master/modules/angular2/docs/bundles/overview.md
       // Reference: https://github.com/kevlened/copy-webpack-plugin
