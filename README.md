@@ -121,7 +121,11 @@ npm run docs
 
 #### Do I need to add script / link tags into index.html ?
 
-No, Webpack will add all the needed Javascript bundles as script tags and all the CSS files as link tags. The advantage is that you don't need to modify the index.html everytime you build your solution to update the hashes.
+No, Webpack will add all the needed Javascript bundles as script tags and all the CSS files as link tags. The advantage is that you don't need to modify the index.html every time you build your solution to update the hashes.
+
+#### Some dependencies are not met, what's going on?
+
+`es6-shim` and `reflect-metadata` are dependencies of angular 2. We decided to include `core-js` as a better replacement.
 
 #### How to include external angular 2 libraries ?
 
