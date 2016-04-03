@@ -1,7 +1,10 @@
 Error.stackTraceLimit = Infinity;
-require('es6-shim');
-require('angular2/bundles/angular2-polyfills.js');
-require('angular2/testing');
+require('core-js');
+
+require('zone.js/dist/zone.js');
+require('zone.js/dist/long-stack-trace-zone.js');
+require('zone.js/dist/jasmine-patch.js');
+
 
 /*
  Ok, this is kinda crazy. We can use the the context method on
