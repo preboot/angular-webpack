@@ -46,7 +46,7 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#entry
    */
   config.entry = isTest ? {} : {
-    'polyfills': './src/polyfills.ts',
+    'polyfills': 'angular2/bundles/angular2-polyfills.js',
     'vendor': './src/vendor.ts',
     'app': './src/bootstrap.ts' // our angular app
   };
