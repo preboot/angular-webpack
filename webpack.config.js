@@ -170,8 +170,7 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://webpack.github.io/docs/code-splitting.html
       // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
       new CommonsChunkPlugin({
-        name: ['app', 'vendor', 'polyfills'],
-        minChunks: Infinity
+        name: ['vendor', 'polyfills']
       }),
 
       // Inject script and link tags into html files
