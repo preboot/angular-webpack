@@ -1,10 +1,4 @@
 Error.stackTraceLimit = Infinity;
-require('core-js');
-
-require('zone.js/dist/zone');
-require('zone.js/dist/long-stack-trace-zone');
-require('zone.js/dist/jasmine-patch');
-
 
 /*
  Ok, this is kinda crazy. We can use the the context method on
@@ -21,7 +15,6 @@ var appContext = require.context('./src', true, /\.spec\.ts/);
 // that will require the file and load it up here. Context will
 // loop and require those spec files here
 appContext.keys().forEach(appContext);
-
 
 // Select BrowserDomAdapter.
 // see https://github.com/AngularClass/angular2-webpack-starter/issues/124
