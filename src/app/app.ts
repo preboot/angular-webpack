@@ -2,31 +2,21 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
-import '../style/app.scss';
+import '../styles/app.scss';
 
-import {Api} from './services/api/api';
-import {Home} from './components/home/home';
-import {About} from "./components/about/about";
+import {UsersIndex} from './components/users/users-index';
+import {UsersStore} from './providers/users-store';
 
-/*
- * App Component
- * Top Level Component
- */
 @Component({
-  selector: 'app', // <app></app>
-  providers: [...FORM_PROVIDERS, Api],
-  directives: [...ROUTER_DIRECTIVES],
+  selector: 'app',
+  providers: [UsersStore, FORM_PROVIDERS],
+  directives: [ROUTER_DIRECTIVES],
   pipes: [],
-  styles: [require('./app.scss')],
+  styles: [],
   template: require('./app.html')
 })
 @RouteConfig([
-  {path: '/', component: Home, name: 'Home'},
-  {path: '/About', component: About, name: 'About'}
+  {path: '/users', component: UsersIndex, name: 'UsersIndex', useAsDefault: true},
 ])
 export class App {
-  url: string = 'https://github.com/preboot/angular2-webpack';
-
-  constructor(public api: Api) {
-  }
 }

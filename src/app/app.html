@@ -1,17 +1,11 @@
-<header>
-  <nav>
-    <a [routerLink]="['Home']">Home</a>
-    <a [routerLink]="['About']">About</a>
-  </nav>
-</header>
-<main>
-  <h1 class="title">Hello from {{api.title}} !</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<ul class="nav navbar-nav">
+			<li><a [routerLink]="['UsersIndex']">Users</a></li>
+		</ul>
+	</div>
+</nav>
 
-  <!-- Images (and assets) are parsed and loaded from within the public directory -->
-  <img src="/img/shield-with-beta.png">
-
-  <router-outlet></router-outlet>
-</main>
-<footer>
-  <a href="{{ url }}">Webpack Angular 2 Starter</a>
-</footer>
+<div class="container">
+	<router-outlet></router-outlet>
+</div>

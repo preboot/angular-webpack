@@ -5,5 +5,8 @@
   "ambientDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
     "node": "registry:dt/node#4.0.0+20160412142033"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519"
   }
 }
