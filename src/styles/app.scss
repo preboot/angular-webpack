@@ -1,0 +1,16 @@
+// styles in src/style directory are applied to the whole page
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+body {
+  padding-top: 60px;
+}
+
+pre {
+  margin: 15px 0;
+}
+
+.navbar-default .navbar-nav > li > a.router-link-active {
+  color: $navbar-default-link-active-color;
+  background-color: $navbar-default-link-active-bg;
+}
