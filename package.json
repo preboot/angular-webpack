@@ -7,7 +7,7 @@
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean && npm start",
     "watch": "webpack --watch --progress --profile",
-    "build": "rimraf dist && webpack --progress --profile",
+    "build": "rimraf dist && webpack --progress --profile --bail",
     "server": "webpack-dev-server --inline --progress --port 8080",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
