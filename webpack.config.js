@@ -46,6 +46,7 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#entry
    */
   config.entry = isTest ? {} : {
+    'polyfills': ['es6-shim/es6-shim.js', 'angular2/bundles/angular2-polyfills'],
     'vendor': './src/vendor.ts',
     'app': './src/bootstrap.ts' // our angular app
   };
@@ -56,7 +57,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.output = isTest ? {} : {
     path: root('dist'),
-    publicPath: '/',
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
   };
@@ -102,7 +103,7 @@ module.exports = function makeWebpackConfig() {
       },
 
       // copy those assets to output
-      {test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=[path][name].[ext]?[hash]'},
+      {test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=fonts/[name].[hash].[ext]?'},
 
       // Support for *.json files.
       {test: /\.json$/, loader: 'json'},
@@ -163,22 +164,13 @@ module.exports = function makeWebpackConfig() {
     })
   ];
 
-
   if (!isTest) {
     config.plugins.push(
       // Generate common chunks if necessary
       // Reference: https://webpack.github.io/docs/code-splitting.html
       // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
       new CommonsChunkPlugin({
-        name: 'vendor',
-        filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-        minChunks: Infinity
-      }),
-      new CommonsChunkPlugin({
-        name: 'common',
-        filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-        minChunks: 2,
-        chunks: ['app', 'vendor']
+        name: ['vendor', 'polyfills']
       }),
 
       // Inject script and link tags into html files
@@ -186,24 +178,7 @@ module.exports = function makeWebpackConfig() {
       new HtmlWebpackPlugin({
         template: './src/public/index.html',
         inject: 'body',
-        chunksSortMode: function compare(a, b) {
-          // common always first
-          if (a.names[0] === 'common') {
-            return -1;
-          }
-          // app always last
-          if (a.names[0] === 'app') {
-            return 1;
-          }
-          // vendor before app
-          if (a.names[0] === 'vendor' && b.names[0] === 'app') {
-            return -1;
-          } else {
-            return 1;
-          }
-          // a must be equal to b
-          return 0;
-        }
+        chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
       }),
 
       // Extract css files
@@ -292,4 +267,27 @@ function root(args) {
 function rootNode(args) {
   args = Array.prototype.slice.call(arguments, 0);
   return root.apply(path, ['node_modules'].concat(args));
+}
+
+function packageSort(packages) {
+  // packages = ['polyfills', 'vendor', 'app']
+  var len = packages.length - 1;
+  var first = packages[0];
+  var last = packages[len];
+  return function sort(a, b) {
+    // polyfills always first
+    if (a.names[0] === first) {
+      return -1;
+    }
+    // main always last
+    if (a.names[0] === last) {
+      return 1;
+    }
+    // vendor before app
+    if (a.names[0] !== first && b.names[0] === last) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
 }

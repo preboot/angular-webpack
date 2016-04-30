@@ -1,13 +1,11 @@
 import {
   it,
   inject,
-  injectAsync,
-  beforeEachProviders,
-  TestComponentBuilder,
+  beforeEachProviders
 } from 'angular2/testing';
 
 // to use Translate Service, we need Http, and to test Http we need to mock the backend
-import {BaseRequestOptions, Http, Response, ResponseOptions} from 'angular2/http';
+import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 import {provide} from "angular2/core";
 
@@ -31,8 +29,8 @@ describe('App', () => {
     })
   ]);
 
-  it('should have an url', inject([App], (app:App) => {
-    expect(app.url).toEqual('https://github.com/ocombe/ng2-webpack');
+  it('should have an url', inject([App], (app: App) => {
+    expect(app.url).toEqual('https://github.com/preboot/angular2-webpack');
   }));
 
 });
