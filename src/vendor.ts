@@ -1,3 +1,6 @@
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+
 // Angular 2
 import 'angular2/platform/browser';
 import 'angular2/platform/common_dom';
