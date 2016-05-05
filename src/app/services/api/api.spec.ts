@@ -4,7 +4,8 @@ import {
   expect,
   inject,
   beforeEachProviders
-} from 'angular2/testing';
+} from '@angular/core/testing';
+
 import {Api} from './api';
 
 describe('Api Service', () => {

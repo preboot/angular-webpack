@@ -1,5 +1,13 @@
 Error.stackTraceLimit = Infinity;
 
+require('es6-shim');
+require('reflect-metadata');
+
+require('zone.js/dist/zone');
+require('zone.js/dist/long-stack-trace-zone');
+require('zone.js/dist/jasmine-patch');
+require('zone.js/dist/async-test');
+
 /*
  Ok, this is kinda crazy. We can use the the context method on
  require that webpack created in order to tell webpack
@@ -19,7 +27,7 @@ appContext.keys().forEach(appContext);
 // Select BrowserDomAdapter.
 // see https://github.com/AngularClass/angular2-webpack-starter/issues/124
 // Somewhere in the test setup
-var testing = require('angular2/testing');
-var browser = require('angular2/platform/testing/browser');
+var testing = require('@angular/core/testing');
+var browser = require('@angular/platform-browser-dynamic/testing');
 
-testing.setBaseTestProviders(browser.TEST_BROWSER_PLATFORM_PROVIDERS, browser.TEST_BROWSER_APPLICATION_PROVIDERS);
+testing.setBaseTestProviders(browser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS);

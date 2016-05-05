@@ -3,9 +3,10 @@ import {
   describe,
   async,
   inject,
-  TestComponentBuilder,
   beforeEachProviders
-} from 'angular2/testing';
+} from '@angular/core/testing';
+
+import { TestComponentBuilder } from '@angular/compiler/testing';
 
 import {About} from './about';
 
