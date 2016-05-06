@@ -8,7 +8,7 @@ import {FORM_DIRECTIVES} from '@angular/common';
   styles: [require('./home.scss')],
   template: require('./home.html')
 })
-export class Home implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor() {
     // Do stuff

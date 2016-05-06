@@ -5,8 +5,8 @@ import {FORM_PROVIDERS} from '@angular/common';
 import '../style/app.scss';
 
 import {Api} from './services/api/api';
-import {Home} from './components/home/home';
-import {About} from './components/about/about';
+import {HomeComponent} from './components/home/home';
+import {AboutComponent} from './components/about/about';
 
 /*
  * App Component
@@ -21,8 +21,8 @@ import {About} from './components/about/about';
   template: require('./app.html')
 })
 @RouteConfig([
-  {path: '/', component: Home, name: 'Home'},
-  {path: '/About', component: About, name: 'About'}
+  {path: '/', component: HomeComponent, name: 'Home'},
+  {path: '/About', component: AboutComponent, name: 'About'}
 ])
 export class AppComponent {
   url: string = 'https://github.com/preboot/angular2-webpack';

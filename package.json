@@ -11,7 +11,7 @@
     "server": "webpack-dev-server --inline --progress --port 8080",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
-    "lint": "tslint src/**/*.ts; exit 0",
+    "lint": "tslint 'src/**/*.ts'; exit 0",
     "e2e": "protractor",
     "e2e-live": "protractor --elementExplorer",
     "test": "karma start",

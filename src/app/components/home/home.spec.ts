@@ -6,15 +6,15 @@ import {
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import {Home} from './home';
+import {HomeComponent} from './home';
 
 describe('Home', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEachProviders(() => [
-    Home
+    HomeComponent
   ]);
 
-  it('should log ngOnInit', inject([Home], (home) => {
+  it('should log ngOnInit', inject([HomeComponent], (home) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 

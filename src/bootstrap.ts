@@ -1,4 +1,4 @@
-import {enableProdMode} from "@angular/core";
+import {enableProdMode} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {ELEMENT_PROBE_PROVIDERS} from '@angular/platform-browser';
 import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
@@ -17,14 +17,14 @@ if (process.env.ENV === 'build') {
  * App Component
  * our top level component that holds all of our components
  */
-import {App} from './app/app';
+import {AppComponent} from './app/app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
 document.addEventListener('DOMContentLoaded', function main() {
-  return bootstrap(App, [
+  return bootstrap(AppComponent, [
     // These are dependencies of our App
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,

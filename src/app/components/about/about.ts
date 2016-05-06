@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
   directives: [],
   pipes: []
 })
-export class About implements OnInit {
+export class AboutComponent implements OnInit {
 
   constructor() {
     // Do stuff
