@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-import { FORM_PROVIDERS } from '@angular/common';
 
 import { ApiService } from './shared/api';
 import { HomeComponent } from './+home';
@@ -13,10 +12,9 @@ import '../style/app.scss';
  * Top Level Component
  */
 @Component({
-  selector: 'my-app', // <app></app>
-  providers: [...FORM_PROVIDERS, ApiService],
+  selector: 'my-app', // <my-app></my-app>
+  providers: [ApiService],
   directives: [...ROUTER_DIRECTIVES],
-  pipes: [],
   styles: [require('./app.component.scss')],
   template: require('./app.component.html')
 })

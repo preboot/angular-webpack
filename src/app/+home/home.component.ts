@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FORM_DIRECTIVES } from '@angular/common';
 
 @Component({
   selector: 'my-home',
-  directives: [...FORM_DIRECTIVES],
-  pipes: [],
-  styles: [require('./home.component.scss')],
-  template: require('./home.component.html')
+  template: require('./home.component.html'),
+  styles: [require('./home.component.scss')]
 })
 export class HomeComponent implements OnInit {
 

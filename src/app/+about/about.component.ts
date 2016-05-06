@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'my-about',
   template: require('./about.component.html'),
-  styles: [require('./about.component.scss')],
-  providers: [],
-  directives: [],
-  pipes: []
+  styles: [require('./about.component.scss')]
 })
 export class AboutComponent implements OnInit {
 
