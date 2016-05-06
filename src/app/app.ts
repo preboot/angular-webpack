@@ -6,7 +6,7 @@ import '../style/app.scss';
 
 import {Api} from './services/api/api';
 import {Home} from './components/home/home';
-import {About} from "./components/about/about";
+import {About} from './components/about/about';
 
 /*
  * App Component
@@ -24,7 +24,7 @@ import {About} from "./components/about/about";
   {path: '/', component: Home, name: 'Home'},
   {path: '/About', component: About, name: 'About'}
 ])
-export class App {
+export class AppComponent {
   url: string = 'https://github.com/preboot/angular2-webpack';
 
   constructor(public api: Api) {

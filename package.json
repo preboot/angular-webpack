@@ -37,6 +37,7 @@
   "devDependencies": {
     "angular-cli": "0.0.*",
     "autoprefixer": "^6.3.2",
+    "codelyzer": "0.0.19",
     "copy-webpack-plugin": "^1.1.1",
     "css-loader": "^0.23.0",
     "extract-text-webpack-plugin": "^1.0.1",
