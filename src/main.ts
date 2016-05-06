@@ -20,8 +20,7 @@ if (process.env.ENV === 'build') {
 import {AppComponent} from './app/app.component';
 
 /*
- * Bootstrap our Angular app with a top level component `App` and inject
- * our Services and Providers into Angular's dependency injection
+ * Bootstrap our Angular app with a top level component `App`
  */
 document.addEventListener('DOMContentLoaded', function main() {
   return bootstrap(AppComponent, [
