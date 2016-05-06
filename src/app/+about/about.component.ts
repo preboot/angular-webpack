@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'about',
-  template: require('./about.html'),
-  styles: [require('./about.scss')],
+  selector: 'my-about',
+  template: require('./about.component.html'),
+  styles: [require('./about.component.scss')],
   providers: [],
   directives: [],
   pipes: []

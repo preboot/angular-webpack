@@ -17,7 +17,7 @@ if (process.env.ENV === 'build') {
  * App Component
  * our top level component that holds all of our components
  */
-import {AppComponent} from './app/app';
+import {AppComponent} from './app/app.component';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject

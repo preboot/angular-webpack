@@ -5,19 +5,19 @@ import {
 } from '@angular/core/testing';
 
 // to use Translate Service, we need Http, and to test Http we need to mock the backend
-import {BaseRequestOptions, Http} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
-import {provide} from '@angular/core';
+import { BaseRequestOptions, Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { provide } from '@angular/core';
 
 // Load the implementations that should be tested
-import {Api} from './services/api/api';
-import {AppComponent} from './app';
+import { ApiService } from './shared/api';
+import { AppComponent } from './app.component';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEachProviders(() => [
     AppComponent,
-    Api,
+    ApiService,
     BaseRequestOptions,
     MockBackend,
     // Provide a mocked (fake) backend for Http

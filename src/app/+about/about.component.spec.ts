@@ -8,7 +8,7 @@ import {
 
 import { TestComponentBuilder } from '@angular/compiler/testing';
 
-import {AboutComponent} from './about';
+import { AboutComponent } from './about.component';
 
 describe('About Component', () => {
 
