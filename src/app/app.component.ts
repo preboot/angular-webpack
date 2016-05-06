@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
-import { ApiService } from './shared/api';
+import { ApiService } from './shared';
 import { HomeComponent } from './+home';
 import { AboutComponent } from './+about';
 
