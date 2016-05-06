@@ -15,8 +15,8 @@ import '../style/app.scss';
   selector: 'my-app', // <my-app></my-app>
   providers: [ApiService],
   directives: [...ROUTER_DIRECTIVES],
+  template: require('./app.component.html'),
   styles: [require('./app.component.scss')],
-  template: require('./app.component.html')
 })
 @RouteConfig([
   {path: '/', component: HomeComponent, name: 'Home'},
