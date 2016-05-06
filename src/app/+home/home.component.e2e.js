@@ -5,7 +5,7 @@ describe('Home', function () {
   });
 
   it('should have <my-home>', function () {
-    var home = element(by.css('app my-home'));
+    var home = element(by.css('my-app my-home'));
     expect(home.isPresent()).toEqual(true);
     expect(home.getText()).toEqual("Home Works!");
   });
