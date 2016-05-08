@@ -2,6 +2,8 @@
 
 [![Dependency Status](https://david-dm.org/preboot/angular2-webpack/status.svg)](https://david-dm.org/preboot/angular2-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular2-webpack/dev-status.svg)](https://david-dm.org/preboot/angular2-webpack#info=devDependencies)
 
+**Note: This guide is following the Angular's [Style Guide](angular.io/styleguide) so I will be changing conventions here and there eventually. You are free to use your own conventions with this starter.**
+
 A complete, yet simple, starter for Angular 2 using Webpack.
 
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
@@ -12,7 +14,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Coverage with [Istanbul](https://github.com/gotwarlost/istanbul)
 * End-to-end Angular 2 code using [Protractor](https://angular.github.io/protractor/).
 * Stylesheets with [SASS](http://sass-lang.com/) (not required, it supports regular css too).
-* Error reported with [TSLint](http://palantir.github.io/tslint/).
+* Error reported with [TSLint](http://palantir.github.io/tslint/) and [Codelyzer](https://github.com/mgechev/codelyzer).
 * Documentation with [TypeDoc](http://typedoc.io/).
 
 >Warning: Make sure you're using the latest version of Node.js and NPM
@@ -21,7 +23,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 
 ### Quick start
 
-> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
+> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.component.ts`](/src/app/app.component.ts)
 
 ```bash
 # clone our repo
@@ -58,7 +60,7 @@ go to [http://localhost:8080](http://localhost:8080) in your browser.
 
 What you need to run this app:
 * `node` and `npm` (Use [NVM](https://github.com/creationix/nvm))
-* Ensure you're running Node (`v4.1.x`+) and NPM (`2.14.x`+)
+* Ensure you're running Node (`v5.x.x`+) and NPM (`3.x.x`+)
 
 ## Installing
 
