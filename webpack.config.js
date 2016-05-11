@@ -177,8 +177,7 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/ampedandwired/html-webpack-plugin
       new HtmlWebpackPlugin({
         template: './src/public/index.html',
-        inject: 'body',
-        chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
+        chunksSortMode: 'dependency'
       }),
 
       // Extract css files
