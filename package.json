@@ -36,7 +36,6 @@
     "zone.js": "0.6.12"
   },
   "devDependencies": {
-    "angular-cli": "0.0.*",
     "autoprefixer": "^6.3.2",
     "codelyzer": "0.0.19",
     "copy-webpack-plugin": "^2.1.3",

@@ -47,7 +47,6 @@ go to [http://localhost:8080](http://localhost:8080) in your browser.
     * [Installing](#installing)
     * [Running the app](#running-the-app)
     * [Developing](#developing)
-    * [Add new components with Angular 2 cli](#add-new-components-services-pipes-with-angular-2-cli)
     * [Testing](#testing)
     * [Documentation](#documentation)
 * [Frequently asked questions](#faq)
@@ -79,17 +78,6 @@ npm start
 It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
 
 ## Developing
-
-### Add new components, services, pipes with Angular 2 cli
-
-**ANGULAR CLI IS EVOLVING REALLY FAST SO THE CLI SUPPORT HERE IS BROKEN, WILL UPDATE SOON.**
-
-* `npm install -g angular-cli` to install Angular 2 cli
-* Add a new component with: `ng generate component my-new-component`
-* Add a new service with: `ng generate service my-new-service`
-* Add a new pipe with: `ng generate pipe my-new-pipe`
-
-Read more at [angular-cli github](https://github.com/angular/angular-cli).
 
 ### Build files
 
