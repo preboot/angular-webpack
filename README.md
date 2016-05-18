@@ -9,7 +9,6 @@ A complete, yet simple, starter for Angular 2 using Webpack.
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for [Angular 2](https://angular.io/).
 * Ready to go build system using [Webpack](https://webpack.github.io/docs/) for working with [TypeScript](http://www.typescriptlang.org/).
-* Easily add new components using [Angular 2 cli](https://github.com/angular/angular-cli).
 * Testing Angular 2 code with [Jasmine](http://jasmine.github.io/) and [Karma](http://karma-runner.github.io/).
 * Coverage with [Istanbul](https://github.com/gotwarlost/istanbul)
 * End-to-end Angular 2 code using [Protractor](https://angular.github.io/protractor/).
