@@ -1,4 +1,5 @@
 var path = require('path');
+
 var webpackConfig = require('./webpack.config');
 
 module.exports = function (config) {
@@ -13,7 +14,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: './karma-shim.js', watched: false}
+      { pattern: './karma-shim.js', watched: false }
     ],
 
     // list of files to exclude
@@ -35,10 +36,23 @@ module.exports = function (config) {
 
     coverageReporter: {
       dir: 'coverage/',
-      reporters: [
-        {type: 'text-summary'},
-        {type: 'html'}
-      ]
+      reporters: [{
+        type: 'json',
+        dir: 'coverage',
+        subdir: 'json',
+        file: 'coverage-final.json'
+      }]
+    },
+
+    remapIstanbulReporter: {
+      src: 'coverage/json/coverage-final.json',
+      reports: {
+        lcovonly: 'coverage/json/lcov.info',
+        html: 'coverage/html',
+        'text': null
+      },
+      timeoutNotCreated: 1000, // default value
+      timeoutNoMoreFiles: 1000 // default value
     },
 
     webpackServer: {
@@ -48,7 +62,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha', 'coverage'],
+    reporters: ["mocha", "coverage", "karma-remap-istanbul"],
 
     // web server port
     port: 9876,
