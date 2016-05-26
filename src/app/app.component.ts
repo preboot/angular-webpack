@@ -19,8 +19,8 @@ import '../style/app.scss';
   styles: [require('./app.component.scss')],
 })
 @RouteConfig([
-  {path: '/', component: HomeComponent, name: 'Home'},
-  {path: '/About', component: AboutComponent, name: 'About'}
+  { path: '/', component: HomeComponent, name: 'Home' },
+  { path: '/About', component: AboutComponent, name: 'About' }
 ])
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';

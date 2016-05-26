@@ -1,8 +1,43 @@
 var path = require('path');
+
 var webpackConfig = require('./webpack.config');
+
+var _ = require("lodash");
+
+// inlineSourceMap, instanbulInstrumenter and compilerOpotions
+// are necessary to the coverage remap
+_.defaults(webpackConfig, {
+  devtool: "inline-source-map",
+  ts: {
+    compilerOptions: {
+      sourceMap: false,
+      sourceRoot: './src',
+      inlineSourceMap: true
+    }
+  },
+  module: {
+    postLoaders: [{
+      test: /\.ts$/,
+      exclude: /\.spec\.ts|vendor\.ts|specs\.ts/,
+      loader: "istanbul-instrumenter",
+      include: path.resolve("src")
+    }]
+  }
+});
 
 module.exports = function (config) {
   var _config = {
+
+    plugins: [
+      'karma-coverage',
+      'karma-webpack',
+      'karma-jasmine',
+      'karma-mocha-reporter',
+      'karma-sourcemap-loader',
+      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
+      require("./karma-remap-coverage")
+    ],
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -13,7 +48,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: './karma-shim.js', watched: false}
+      { pattern: './karma-shim.js', watched: false }
     ],
 
     // list of files to exclude
@@ -32,13 +67,22 @@ module.exports = function (config) {
       // i. e.
       stats: 'errors-only'
     },
-
+    
     coverageReporter: {
       dir: 'coverage/',
-      reporters: [
-        {type: 'text-summary'},
-        {type: 'html'}
-      ]
+      reporters: [{
+        type: 'json',
+        dir: 'coverage',
+        subdir: 'json',
+        file: 'coverage-final.json'
+      }]
+    },
+
+    remapCoverageReporter: {
+      srcDir: 'coverage/json',
+      srcFile: 'coverage-final.json',
+      htmlOutput: 'coverage/html',
+      lcovOutput: 'coverage/lcov.info'
     },
 
     webpackServer: {
@@ -48,7 +92,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha', 'coverage'],
+    reporters: ["mocha", "coverage", "remap-coverage"],
 
     // web server port
     port: 9876,
