@@ -24,7 +24,7 @@ module.exports = function (config) {
       'karma-sourcemap-loader',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
-      require("./karma-remap-coverage")
+      'karma-remap-istanbul'
     ],
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -66,11 +66,15 @@ module.exports = function (config) {
       }]
     },
 
-    remapCoverageReporter: {
-      srcDir: 'coverage/json',
-      srcFile: 'coverage-final.json',
-      htmlOutput: 'coverage/html',
-      lcovOutput: 'coverage/lcov.info'
+    remapIstanbulReporter: {
+      src: 'coverage/json/coverage-final.json',
+      reports: {
+        lcovonly: 'coverage/json/lcov.info',
+        html: 'coverage/html',
+        'text': null 
+      },
+      timeoutNotCreated: 1000, // default value
+      timeoutNoMoreFiles: 1000 // default value
     },
 
     webpackServer: {
@@ -80,7 +84,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["mocha", "coverage", "remap-coverage"],
+    reporters: ["mocha", "coverage", "karma-remap-istanbul"],
 
     // web server port
     port: 9876,
