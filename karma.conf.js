@@ -2,28 +2,16 @@ var path = require('path');
 
 var webpackConfig = require('./webpack.config');
 
-var _ = require("lodash");
-
-// inlineSourceMap, instanbulInstrumenter and compilerOpotions
+// inlineSourceMap and compilerOptions
 // are necessary to the coverage remap
-_.defaults(webpackConfig, {
-  devtool: "inline-source-map",
-  ts: {
-    compilerOptions: {
-      sourceMap: false,
-      sourceRoot: './src',
-      inlineSourceMap: true
-    }
-  },
-  module: {
-    postLoaders: [{
-      test: /\.ts$/,
-      exclude: /\.spec\.ts|vendor\.ts|specs\.ts/,
-      loader: "istanbul-instrumenter",
-      include: path.resolve("src")
-    }]
+webpackConfig.devtool = "inline-resource-map";
+webpackConfig.ts = {
+  compilerOptions: {
+    sourceMap: false,
+    sourceRoot: './src',
+    inlineSourceMap: true
   }
-});
+};
 
 module.exports = function (config) {
   var _config = {
@@ -67,7 +55,7 @@ module.exports = function (config) {
       // i. e.
       stats: 'errors-only'
     },
-    
+
     coverageReporter: {
       dir: 'coverage/',
       reporters: [{

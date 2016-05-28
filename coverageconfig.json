@@ -1,5 +1,0 @@
-{
-    "coverage": ["coverage/lcov.info"],
-    "sourcemapped": ["src/app/**/**.ts"],
-    "automaticallyShow": true
-}

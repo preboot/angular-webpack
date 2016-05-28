@@ -5,7 +5,6 @@ var shelljs = require("shelljs");
 var remapIstanbul = require("remap-istanbul");
 
 var RemapCoverageReporter = function(baseReporterDecorator, config, logger, helper, formatError) {
-    //baseReporterDecorator(this);
 
     var remapCoverageReporterConfig = config.remapCoverageReporter || {};
     var sourceDir = remapCoverageReporterConfig.srcDir;
