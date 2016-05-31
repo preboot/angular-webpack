@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { ApiService } from './shared';
 import { HomeComponent } from './home';
@@ -18,9 +18,9 @@ import '../style/app.scss';
   template: require('./app.component.html'),
   styles: [require('./app.component.scss')],
 })
-@RouteConfig([
-  {path: '/', component: HomeComponent, name: 'Home'},
-  {path: '/About', component: AboutComponent, name: 'About'}
+@Routes([
+  {path: '/', component: HomeComponent},
+  {path: '/About', component: AboutComponent}
 ])
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';

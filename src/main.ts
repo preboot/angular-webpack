@@ -1,7 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { ELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { ROUTER_PROVIDERS } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
 
