@@ -139,9 +139,9 @@ module.exports = function makeWebpackConfig() {
   };
 
   if (isTest) {
-    // instrument only testing sources with Istanbul, covers js compiled files for now :-/
+    // instrument only testing sources with Istanbul, covers ts files
     config.module.postLoaders.push({
-      test: /\.(js|ts)$/,
+      test: /\.ts$/,
       include: path.resolve('src'),
       loader: 'istanbul-instrumenter-loader',
       exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
