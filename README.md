@@ -116,7 +116,7 @@ No, Webpack will add all the needed Javascript bundles as script tags and all th
 
 #### How to include external angular 2 libraries ?
 
-It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/preboot/angular2-webpack/blob/master/src/bootstrap.ts) of your application.
+It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/preboot/angular2-webpack/blob/master/src/main.ts) of your application.
 
 ### How to include external css files such as bootstrap.css ?
 
