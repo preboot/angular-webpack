@@ -8,6 +8,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var OfflinePlugin = require('offline-plugin');
 
 /**
  * Env
@@ -217,7 +218,11 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
         from: root('src/public')
-      }])
+      }]),
+
+      new OfflinePlugin({
+        excludes: ['**/*.ts', '**/*.map']
+      })
     );
   }
 

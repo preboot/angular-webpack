@@ -59,6 +59,7 @@
     "karma-webpack": "1.7.0",
     "node-sass": "^3.4.2",
     "null-loader": "0.1.1",
+    "offline-plugin": "^3.3.0",
     "phantomjs-prebuilt": "^2.1.4",
     "postcss-loader": "^0.9.1",
     "protractor": "^3.1.1",

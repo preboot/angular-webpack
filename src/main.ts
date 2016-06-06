@@ -11,6 +11,7 @@ const ENV_PROVIDERS = [];
 // depending on the env mode, enable prod mode or add debugging modules
 if (process.env.ENV === 'build') {
   enableProdMode();
+  require('offline-plugin/runtime').install();
 } else {
   ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
 }
