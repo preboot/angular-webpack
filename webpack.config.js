@@ -220,6 +220,8 @@ module.exports = function makeWebpackConfig() {
         from: root('src/public')
       }]),
 
+      // Reference: https://github.com/NekR/offline-plugin
+      // Register all output assets to serviceworkers and appcache, except those specified in excludes
       new OfflinePlugin({
         excludes: ['**/*.ts', '**/*.map']
       })
