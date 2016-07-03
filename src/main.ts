@@ -1,6 +1,5 @@
 import { enableProdMode } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
 
 import { AppComponent } from './app/app.component';
@@ -14,7 +13,6 @@ if (process.env.ENV === 'build') {
 bootstrap(AppComponent, [
     // These are dependencies of our App
     HTTP_PROVIDERS,
-    APP_ROUTER_PROVIDERS,
-    { provide: LocationStrategy, useClass: HashLocationStrategy } // use #/ routes, remove this for HTML5 mode
+    APP_ROUTER_PROVIDERS
   ])
   .catch(err => console.error(err));
