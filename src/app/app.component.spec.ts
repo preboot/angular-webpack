@@ -1,5 +1,4 @@
 import {
-  it,
   inject,
   addProviders
 } from '@angular/core/testing';
@@ -23,7 +22,7 @@ describe('App', () => {
       // Provide a mocked (fake) backend for Http
       {
         provide: Http,
-        deps: [MockBackend, BaseRequestOptions]
+        deps: [MockBackend, BaseRequestOptions],
         useFactory: function useFactory(backend, defaultOptions) {
           return new Http(backend, defaultOptions);
         }
