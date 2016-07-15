@@ -6,7 +6,7 @@ import { AppComponent } from './app/app.component';
 import { APP_ROUTER_PROVIDERS } from './app/app.routes';
 
 // depending on the env mode, enable prod mode or add debugging modules
-if (process.env.ENV === 'build') {
+if (process.env.ENV === 'PROD') {
   enableProdMode();
 }
 
