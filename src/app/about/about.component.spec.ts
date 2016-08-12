@@ -1,22 +1,24 @@
-import {
-  async,
-  inject,
-  addProviders
-} from '@angular/core/testing';
+import { Component } from '@angular/core';
 
-import { TestComponentBuilder } from '@angular/compiler/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
 
 describe('About Component', () => {
+  const html = '<my-about></my-about>';
+
   beforeEach(() => {
-    addProviders([]);
+    TestBed.configureTestingModule({declarations: [AboutComponent, TestComponent]});
+    TestBed.overrideComponent(TestComponent, { set: { template: html }});
   });
 
-  it('should ...', async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-    tcb.createAsync(AboutComponent).then((fixture) => {
-      fixture.detectChanges();
-    });
-  })));
+  it('should ...', () => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.children[0].textContent).toContain('About Works!');
+  });
 
 });
+
+@Component({selector: 'test-cmp', template: ''})
+class TestComponent { }
