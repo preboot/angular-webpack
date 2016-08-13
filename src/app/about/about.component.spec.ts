@@ -20,5 +20,5 @@ describe('About Component', () => {
 
 });
 
-@Component({selector: 'test-cmp', template: ''})
+@Component({selector: 'my-test', template: ''})
 class TestComponent { }
