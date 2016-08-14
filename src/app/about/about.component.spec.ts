@@ -1,5 +1,3 @@
-import { Component } from '@angular/core';
-
 import { TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
@@ -8,17 +6,13 @@ describe('About Component', () => {
   const html = '<my-about></my-about>';
 
   beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [AboutComponent, TestComponent]});
-    TestBed.overrideComponent(TestComponent, { set: { template: html }});
+    TestBed.configureTestingModule({declarations: [AboutComponent]});
   });
 
   it('should ...', () => {
-    const fixture = TestBed.createComponent(TestComponent);
+    const fixture = TestBed.createComponent(AboutComponent);
     fixture.detectChanges();
     expect(fixture.nativeElement.children[0].textContent).toContain('About Works!');
   });
 
 });
-
-@Component({selector: 'my-test', template: ''})
-class TestComponent { }
