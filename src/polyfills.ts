@@ -4,7 +4,7 @@ require('zone.js/dist/zone');
 
 import 'ts-helpers';
 
-if (process.env.ENV === 'build') {
+if (process.env.ENV === 'PROD') {
   // Production
 
 } else {
