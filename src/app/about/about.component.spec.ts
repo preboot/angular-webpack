@@ -3,8 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { AboutComponent } from './about.component';
 
 describe('About Component', () => {
-  const html = '<my-about></my-about>';
-
   beforeEach(() => {
     TestBed.configureTestingModule({declarations: [AboutComponent]});
   });
