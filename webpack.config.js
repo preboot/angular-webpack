@@ -123,8 +123,7 @@ module.exports = function makeWebpackConfig() {
       // todo: change the loader to something that adds a hash to images
       {test: /\.html$/, loader: 'raw'}
     ],
-    postLoaders: [],
-    noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
+    postLoaders: []
   };
 
   if (isTest) {
