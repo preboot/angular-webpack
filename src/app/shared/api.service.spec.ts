@@ -1,16 +1,13 @@
-import {
-  inject,
-  addProviders
-} from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { ApiService } from './api.service';
 
 describe('Api Service', () => {
   beforeEach(() => {
-    addProviders([ApiService]);
+    TestBed.configureTestingModule({providers: [ApiService]});
   });
 
-  it('should ...', inject([ApiService], (api: ApiService) => {
+  it('should ...', inject([ApiService], (api) => {
     expect(api.title).toBe('Angular 2');
   }));
 });

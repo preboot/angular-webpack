@@ -92,7 +92,10 @@ module.exports = function makeWebpackConfig() {
       },
 
       // copy those assets to output
-      {test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=fonts/[name].[hash].[ext]?'},
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file?name=fonts/[name].[hash].[ext]?'
+      },
 
       // Support for *.json files.
       {test: /\.json$/, loader: 'json'},
@@ -123,8 +126,7 @@ module.exports = function makeWebpackConfig() {
       // todo: change the loader to something that adds a hash to images
       {test: /\.html$/, loader: 'raw'}
     ],
-    postLoaders: [],
-    noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
+    postLoaders: []
   };
 
   if (isTest) {
@@ -198,7 +200,7 @@ module.exports = function makeWebpackConfig() {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({mangle: { keep_fnames: true }}),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin

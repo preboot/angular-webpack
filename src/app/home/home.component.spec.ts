@@ -1,23 +1,25 @@
-import {
-  inject,
-  addProviders,
-} from '@angular/core/testing';
+// This shows a different way of testing a component, check about for a simpler one
+import { Component } from '@angular/core';
 
-// Load the implementations that should be tested
+import { TestBed } from '@angular/core/testing';
+
 import { HomeComponent } from './home.component';
 
-describe('Home', () => {
-  // provide our implementations or mocks to the dependency injector
+describe('Home Component', () => {
+  const html = '<my-home></my-home>';
+
   beforeEach(() => {
-    addProviders([HomeComponent]);
+    TestBed.configureTestingModule({declarations: [HomeComponent, TestComponent]});
+    TestBed.overrideComponent(TestComponent, { set: { template: html }});
   });
 
-  it('should log ngOnInit', inject([HomeComponent], (home) => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
-
-    home.ngOnInit();
-    expect(console.log).toHaveBeenCalledWith('Hello Home');
-  }));
+  it('should ...', () => {
+    const fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.children[0].textContent).toContain('Home Works!');
+  });
 
 });
+
+@Component({selector: 'my-test', template: ''})
+class TestComponent { }
