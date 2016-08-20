@@ -45,9 +45,9 @@ go to [http://localhost:8080](http://localhost:8080) in your browser.
 * [Getting Started](#getting-started)
     * [Dependencies](#dependencies)
     * [Installing](#installing)
-    * [Running the app](#running-the-app)
     * [Developing](#developing)
     * [Testing](#testing)
+    * [Production](#production)
     * [Documentation](#documentation)
 * [Frequently asked questions](#faq)
 * [TypeScript](#typescript)
@@ -67,22 +67,13 @@ What you need to run this app:
 * `clone` your fork
 * `npm install` to install all dependencies
 
-## Running the app
-
-After you have installed all dependencies you can now run the app with:
-
-```bash
-npm start
-```
-
-It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
-
 ## Developing
 
-### Build files
+After you have installed all dependencies you can now start developing with:
 
-* single run: `npm run build`
-* build files and watch: `npm run watch`
+* `npm start`
+
+It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The application can be checked at `http://localhost:8080`.
 
 ## Testing
 
@@ -102,12 +93,19 @@ It will start a local server using `webpack-dev-server` which will watch, build 
   * when debugging or first writing test suites, you may find it helpful to try out Protractor commands without starting up the entire test suite. You can do this with the element explorer.
   * you can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
+## Production
+
+To build your application, run:
+
+* `npm run build`
+
+You can now go to `/dist` and deploy that to your server!
+
 ## Documentation
 
 You can generate api docs (using [TypeDoc](http://typedoc.io/)) for your code with the following:
-```bash
-npm run docs
-```
+
+* `npm run docs`
 
 # FAQ
 
@@ -124,7 +122,7 @@ It's simple, just install the lib via npm and import it in your code when you ne
 Just install the lib and import the css files in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
 
 ```sh
-npm install bootstrap@4.0.0 --save
+npm install bootstrap@next --save
 ```
 
 And in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts) add the following:
