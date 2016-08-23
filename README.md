@@ -76,6 +76,12 @@ After you have installed all dependencies you can now start developing with:
 
 It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The application can be checked at `http://localhost:8080`.
 
+As an alternative, you can work using Hot Module Replacement (HMR):
+
+* `npm run start:hmr`
+
+And you are all set! You can now modify your components on the fly without having to reload the entire page.
+
 ## Testing
 
 #### 1. Unit Tests
