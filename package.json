@@ -20,6 +20,7 @@
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "start": "npm run server",
+    "start:hmr": "npm run server -- --hot",
     "postinstall": "npm run webdriver-update && typings install"
   },
   "dependencies": {
@@ -37,6 +38,8 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "@angularclass/hmr": "^1.0.1",
+    "@angularclass/hmr-loader": "^1.0.0",
     "angular2-template-loader": "^0.4.0",
     "autoprefixer": "^6.3.2",
     "codelyzer": "0.0.26",
