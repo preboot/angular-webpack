@@ -3,7 +3,7 @@
     "jasmine": "registry:dt/jasmine#2.2.0+20160412134438"
   },
   "globalDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
+    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
     "node": "registry:dt/node#4.0.0+20160501135006"
   }
 }
