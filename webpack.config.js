@@ -8,6 +8,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 
 /**
  * Env
@@ -163,6 +164,10 @@ module.exports = function makeWebpackConfig() {
       }
     })
   ];
+
+  if (!isTest && !isProd) {
+      config.plugins.push(new DashboardPlugin());
+  }
 
   if (!isTest) {
     config.plugins.push(
