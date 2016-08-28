@@ -1,6 +1,6 @@
 Error.stackTraceLimit = Infinity;
 
-require('es6-shim');
+require('core-js/client/shim');
 require('reflect-metadata');
 
 require('ts-helpers');
