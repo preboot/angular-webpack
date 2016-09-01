@@ -21,7 +21,7 @@
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "start": "npm run server",
     "start:hmr": "npm run server -- --hot",
-    "postinstall": "npm run webdriver-update && typings install"
+    "postinstall": "npm run webdriver-update"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.6",
@@ -40,6 +40,11 @@
   "devDependencies": {
     "@angularclass/hmr": "^1.0.1",
     "@angularclass/hmr-loader": "^1.0.0",
+    "@types/core-js": "^0.9.0",
+    "@types/jasmine": "^2.2.29",
+    "@types/node": "^6.0.38",
+    "@types/protractor": "^1.5.16",
+    "@types/selenium-webdriver": "^2.44.26",
     "angular2-template-loader": "^0.4.0",
     "autoprefixer": "^6.3.2",
     "codelyzer": "0.0.26",
@@ -78,8 +83,7 @@
     "tslint": "^3.4.0",
     "tslint-loader": "^2.1.0",
     "typedoc": "^0.4.4",
-    "typescript": "^1.8.0",
-    "typings": "^1.0.4",
+    "typescript": "2.0.2",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.13",
     "webpack-dashboard": "^0.1.8",
