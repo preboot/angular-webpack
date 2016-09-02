@@ -138,6 +138,35 @@ And in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/v
 import 'bootstrap/dist/css/bootstrap.css';
 ```
 
+#### How to include external js library such as jQuery ?
+
+Just install the lib and import the js file in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
+
+```sh
+npm install jquery --save
+```
+
+Note: Skip the npm install step right above, if you aleady installed bootstrap@next as it installs jQuery already.
+
+And in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts) add the following:
+
+```ts
+import 'jquery/dist/jquery.js';
+import 'tether/dist/js/tether.js';
+import 'bootstrap/dist/js/bootstrap.js';
+```
+
+Then in [webpack.config.js](https://github.com/preboot/angular2-webpack/blob/master/webpack.config.js) add the following within `config.plugins`:
+ 
+```js
+new webpack.ProvidePlugin({
+      $: "jquery",
+      jquery: "jquery",
+      jQuery: "jquery",
+      "windows.jQuery": "jquery"
+    })
+```
+
 # TypeScript
 
 > To take full advantage of TypeScript with autocomplete you would have to use an editor with the correct TypeScript plugins.
