@@ -160,11 +160,13 @@ Then in [webpack.config.js](https://github.com/preboot/angular2-webpack/blob/mas
  
 ```js
 new webpack.ProvidePlugin({
-      $: "jquery",
-      jquery: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
-    })
+  $: "jquery",
+  jquery: "jquery",
+  jQuery: "jquery",
+  "window.jQuery": "jquery",
+  "Tether": 'tether',
+  "window.Tether": "tether"
+})
 ```
 
 # TypeScript
