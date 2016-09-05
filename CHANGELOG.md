@@ -1,5 +1,9 @@
 # Changelog
 
+# 5 September 2016
+
+- Migration to TS2 and @types
+
 ## 1 September 2016
 
 - Using RC6.
