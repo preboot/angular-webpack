@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 /**
  * Env
@@ -167,6 +168,27 @@ module.exports = function makeWebpackConfig() {
 
   if (!isTest && !isProd) {
       config.plugins.push(new DashboardPlugin());
+      config.plugins.push(new BrowserSyncPlugin(
+        // BrowserSync options
+        {
+          // browse to http://localhost:3000/ during development
+          host: '0.0.0.0',
+          port: 8080,
+          ui: {
+            port: 8081
+          },
+          // proxy the Webpack Dev Server endpoint
+          // (which should be serving on http://localhost:3100/)
+          // through BrowserSync
+          proxy: 'http://0.0.0.0:8082/'
+        },
+        // plugin options
+        {
+          // prevent BrowserSync from reloading the page
+          // and let Webpack Dev Server take care of this
+          reload: false
+        }
+     ));
   }
 
   if (!isTest) {
