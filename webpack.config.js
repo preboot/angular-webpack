@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+const {ForkCheckerPlugin} = require('awesome-typescript-loader');
 
 /**
  * Env
@@ -76,6 +77,9 @@ module.exports = function makeWebpackConfig() {
     }
   };
 
+
+  var atlOptions = isTest ? 'sourceMap=false&inlineSourceMap=true' : '';
+
   /**
    * Loaders
    * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
@@ -88,7 +92,7 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loaders: ['ts', 'angular2-template-loader', '@angularclass/hmr-loader'],
+        loaders: [`awesome-typescript-loader?${atlOptions}`, 'angular2-template-loader', '@angularclass/hmr-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
@@ -138,15 +142,6 @@ module.exports = function makeWebpackConfig() {
       loader: 'istanbul-instrumenter-loader',
       exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
     });
-
-    // needed for remap-instanbul
-    config.ts = {
-      compilerOptions: {
-        sourceMap: false,
-        sourceRoot: './src',
-        inlineSourceMap: true
-      }
-    };
   }
 
   /**
@@ -171,6 +166,8 @@ module.exports = function makeWebpackConfig() {
 
   if (!isTest) {
     config.plugins.push(
+      new ForkCheckerPlugin(),
+
       // Generate common chunks if necessary
       // Reference: https://webpack.github.io/docs/code-splitting.html
       // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
