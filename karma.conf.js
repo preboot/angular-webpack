@@ -1,6 +1,7 @@
 var path = require('path');
 
 var webpackConfig = require('./webpack.config');
+var isTestWatch = ENV === 'test-watch';
 
 module.exports = function (config) {
   var _config = {
@@ -34,27 +35,6 @@ module.exports = function (config) {
       stats: 'errors-only'
     },
 
-    coverageReporter: {
-      dir: 'coverage/',
-      reporters: [{
-        type: 'json',
-        dir: 'coverage',
-        subdir: 'json',
-        file: 'coverage-final.json'
-      }]
-    },
-
-    remapIstanbulReporter: {
-      src: 'coverage/json/coverage-final.json',
-      reports: {
-        lcovonly: 'coverage/json/lcov.info',
-        html: 'coverage/html',
-        'text': null
-      },
-      timeoutNotCreated: 1000, // default value
-      timeoutNoMoreFiles: 1000 // default value
-    },
-
     webpackServer: {
       noInfo: true // please don't spam the console when running in karma!
     },
@@ -62,7 +42,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["mocha", "coverage", "karma-remap-istanbul"],
+    reporters: ["mocha"],
 
     // web server port
     port: 9876,
@@ -85,6 +65,31 @@ module.exports = function (config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true
   };
+
+  if (!isTestWatch) {
+    _config.reporters.push("coverage", "karma-remap-istanbul");
+
+    _config.coverageReporter = {
+      dir: 'coverage/',
+      reporters: [{
+        type: 'json',
+        dir: 'coverage',
+        subdir: 'json',
+        file: 'coverage-final.json'
+      }]
+    };
+
+    _config.remapIstanbulReporter = {
+      src: 'coverage/json/coverage-final.json',
+      reports: {
+        lcovonly: 'coverage/json/lcov.info',
+        html: 'coverage/html',
+        'text': null
+      },
+      timeoutNotCreated: 1000, // default value
+      timeoutNoMoreFiles: 1000 // default value
+    };
+  }
 
   config.set(_config);
 

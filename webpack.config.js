@@ -16,7 +16,8 @@ const {ForkCheckerPlugin} = require('awesome-typescript-loader');
  * Get npm lifecycle event to identify the environment
  */
 var ENV = process.env.npm_lifecycle_event;
-var isTest = ENV === 'test' || ENV === 'test-watch';
+var isTestWatch = ENV === 'test-watch';
+var isTest = ENV === 'test' || isTestWatch;
 var isProd = ENV === 'build';
 
 module.exports = function makeWebpackConfig() {
@@ -34,7 +35,11 @@ module.exports = function makeWebpackConfig() {
    */
   if (isProd) {
     config.devtool = 'source-map';
-  } else {
+  } 
+  // else if (isTest) {
+  //   config.devtool = 'inline-source-map';
+  // }
+  else {
     config.devtool = 'eval-source-map';
   }
 
@@ -77,9 +82,6 @@ module.exports = function makeWebpackConfig() {
     }
   };
 
-
-  var atlOptions = isTest ? 'sourceMap=false&inlineSourceMap=true' : '';
-
   /**
    * Loaders
    * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
@@ -92,7 +94,7 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loaders: [`awesome-typescript-loader?${atlOptions}`, 'angular2-template-loader', '@angularclass/hmr-loader'],
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader', '@angularclass/hmr-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
@@ -134,7 +136,7 @@ module.exports = function makeWebpackConfig() {
     postLoaders: []
   };
 
-  if (isTest) {
+  if (isTest && !isTestWatch) {
     // instrument only testing sources with Istanbul, covers ts files
     config.module.postLoaders.push({
       test: /\.ts$/,
