@@ -1,5 +1,9 @@
 # Changelog
 
+# 18 September 2016
+
+- Using `awesome-typescript-loader` instead of `ts-loader`.
+
 # 5 September 2016
 
 - Migration to TS2 and @types
