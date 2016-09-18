@@ -9,7 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
-const {ForkCheckerPlugin} = require('awesome-typescript-loader');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 /**
  * Env
@@ -36,9 +36,9 @@ module.exports = function makeWebpackConfig() {
   if (isProd) {
     config.devtool = 'source-map';
   } 
-  // else if (isTest) {
-  //   config.devtool = 'inline-source-map';
-  // }
+  else if (isTest) {
+    config.devtool = 'inline-source-map';
+  }
   else {
     config.devtool = 'eval-source-map';
   }
@@ -82,6 +82,12 @@ module.exports = function makeWebpackConfig() {
     }
   };
 
+  var atlOptions = '';
+  if (isTest && !isTestWatch) {
+    // awesome-typescript-loader needs to output inlineSourceMap for code coverage to work with source maps.
+    atlOptions = 'inlineSourceMap=true&sourceMap=false';
+  } 
+
   /**
    * Loaders
    * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
@@ -94,7 +100,7 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader', '@angularclass/hmr-loader'],
+        loaders: ['awesome-typescript-loader?' + atlOptions, 'angular2-template-loader', '@angularclass/hmr-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 

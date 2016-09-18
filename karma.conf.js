@@ -69,7 +69,7 @@ module.exports = function (config) {
   };
 
   if (!isTestWatch) {
-    _config.reporters.push("coverage", "karma-remap-istanbul");
+    _config.reporters.push("coverage");
 
     _config.coverageReporter = {
       dir: 'coverage/',
@@ -79,17 +79,6 @@ module.exports = function (config) {
         subdir: 'json',
         file: 'coverage-final.json'
       }]
-    };
-
-    _config.remapIstanbulReporter = {
-      src: 'coverage/json/coverage-final.json',
-      reports: {
-        lcovonly: 'coverage/json/lcov.info',
-        html: 'coverage/html',
-        'text': null
-      },
-      timeoutNotCreated: 1000, // default value
-      timeoutNoMoreFiles: 1000 // default value
     };
   }
 

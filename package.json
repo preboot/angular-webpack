@@ -16,6 +16,7 @@
     "e2e-live": "protractor --elementExplorer",
     "pretest": "npm run lint",
     "test": "karma start",
+    "posttest": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html -t html",
     "test-watch": "karma start --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
