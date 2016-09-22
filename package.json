@@ -45,7 +45,7 @@
     "@types/jasmine": "^2.2.29",
     "@types/node": "^6.0.38",
     "@types/protractor": "^1.5.16",
-    "@types/selenium-webdriver": "^2.44.26",
+    "@types/selenium-webdriver": "2.44.26",
     "angular2-template-loader": "^0.4.0",
     "autoprefixer": "^6.3.2",
     "awesome-typescript-loader": "^2.2.4",
