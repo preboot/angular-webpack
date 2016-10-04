@@ -1,5 +1,9 @@
 # Changelog
 
+# 04 October 2016
+
+- Migrate to webpack 2
+
 # 18 September 2016
 
 - Using `awesome-typescript-loader` instead of `ts-loader`.
