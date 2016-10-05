@@ -210,7 +210,7 @@ module.exports = function makeWebpackConfig() {
       config.plugins.push(new DashboardPlugin());
   }
 
-  if (!isTest || !isTestWatch) {
+  if (!isTest && !isTestWatch) {
     config.plugins.push(
       new ForkCheckerPlugin(),
 
