@@ -16,7 +16,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * End-to-end Angular 2 code using [Protractor](https://angular.github.io/protractor/).
 * Stylesheets with [SASS](http://sass-lang.com/) (not required, it supports regular css too).
 * Error reported with [TSLint](http://palantir.github.io/tslint/) and [Codelyzer](https://github.com/mgechev/codelyzer).
-* Documentation with [TypeDoc](http://typedoc.io/).
+* Documentation with [TypeDoc](http://typedoc.org/).
 
 >Warning: Make sure you're using the latest version of Node.js and NPM
 
