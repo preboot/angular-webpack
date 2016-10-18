@@ -52,8 +52,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.entry = isTest ? {} : {
     'polyfills': './src/polyfills.ts',
-    // Vendor TS removed (tree shaking)
-    // 'vendor': './src/vendor.ts',
+    'vendor': './src/vendor.ts',
     'app': './src/main.ts' // our angular app
   };
 
