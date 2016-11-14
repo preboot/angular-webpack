@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { ApiService } from './shared';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import { MyMockBackend} from './MyMockBackend';
 
 @NgModule({
   imports: [
@@ -24,6 +25,13 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AboutComponent
   ],
   providers: [
+    MyMockBackend,
+    BaseRequestOptions,
+    {
+      provide: Http,
+      deps: [MyMockBackend, BaseRequestOptions],
+      useFactory: (backend, options) => { return new Http(backend, options); }
+    },
     ApiService
   ],
   bootstrap: [AppComponent]
