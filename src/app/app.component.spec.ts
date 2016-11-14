@@ -4,12 +4,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ApiService } from './shared';
 import { AppComponent } from './app.component';
+import {HttpModule} from '@angular/http';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule],
       declarations: [AppComponent],
       providers: [ApiService, provideRoutes([])]
     });
