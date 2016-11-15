@@ -97,7 +97,7 @@ module.exports = function makeWebpackConfig() {
       // copy those assets to output
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file?name=fonts/[name].[hash].[ext]?'
+        loader: 'file-loader?name=fonts/[name].[hash].[ext]?'
       },
 
       // Support for *.json files.
