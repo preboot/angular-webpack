@@ -8,7 +8,6 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 /**
@@ -205,10 +204,6 @@ module.exports = function makeWebpackConfig() {
       }
     })
   ];
-
-  if (!isTest && !isProd) {
-      config.plugins.push(new DashboardPlugin());
-  }
 
   if (!isTest && !isTestWatch) {
     config.plugins.push(
