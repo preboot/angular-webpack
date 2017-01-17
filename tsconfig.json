@@ -5,7 +5,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
