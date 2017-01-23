@@ -11,8 +11,9 @@ import '../style/app.scss';
 })
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';
+  title: string;
 
   constructor(private api: ApiService) {
-    // Do something with api
+    this.title = this.api.title;
   }
 }
