@@ -41,15 +41,17 @@ module.exports = function makeWebpackConfig() {
     config.devtool = 'eval-source-map';
   }
 
-  /**
-   * Entry
-   * Reference: http://webpack.github.io/docs/configuration.html#entry
-   */
-  config.entry = isTest ? {} : {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts' // our angular app
-  };
+  if (!isTest) {
+    /**
+     * Entry
+     * Reference: http://webpack.github.io/docs/configuration.html#entry
+     */
+    config.entry = isTest ? {} : {
+      'polyfills': './src/polyfills.ts',
+      'vendor': './src/vendor.ts',
+      'app': './src/main.ts' // our angular app
+    };
+  }
 
   /**
    * Output
