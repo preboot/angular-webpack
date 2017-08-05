@@ -1,22 +1,22 @@
 // Helper: root() is defined at the bottom
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 // Webpack Plugins
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var autoprefixer = require('autoprefixer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
  * Env
  * Get npm lifecycle event to identify the environment
  */
-var ENV = process.env.npm_lifecycle_event;
-var isTestWatch = ENV === 'test-watch';
-var isTest = ENV === 'test' || isTestWatch;
-var isProd = ENV === 'build';
+const ENV = process.env.npm_lifecycle_event;
+let isTestWatch = ENV === 'test-watch';
+let isTest = ENV === 'test' || isTestWatch;
+let isProd = ENV === 'build';
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -24,7 +24,7 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html
    * This is the object where all configuration gets set
    */
-  var config = {};
+  const config = {};
 
   /**
    * Devtool
@@ -73,7 +73,7 @@ module.exports = function makeWebpackConfig() {
     extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html'],
   };
 
-  var atlOptions = '';
+  let atlOptions = '';
   if (isTest && !isTestWatch) {
     // awesome-typescript-loader needs to output inlineSourceMap for code coverage to work with source maps.
     atlOptions = 'inlineSourceMap=true&sourceMap=false';
@@ -87,6 +87,24 @@ module.exports = function makeWebpackConfig() {
    */
   config.module = {
     rules: [
+      // Allows to use ES6+ features in .js files.
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              'env',
+              {
+                'targets': {
+                  'browsers': ['last 2 versions', 'ie >= 9']
+                }
+              }
+            ]
+          }
+        }
+      },
       // Support for .ts files.
       {
         test: /\.ts$/,
