@@ -1,0 +1,22 @@
+{
+  "name": "angular-starter",
+  "short_name": "ngStarter",
+  "description": "An angular 2 starter boilerplate",
+  "icons": [
+    {
+      "src": "img/angular_48.png",
+      "sizes": "48x48",
+      "type": "image\/png"
+    },
+    {
+      "src": "img/angular_144.png",
+      "sizes": "144x144",
+      "type": "image\/png"
+    }
+  ],
+  "theme_color": "#0147A7",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "./?utm_source=web_app_manifest"
+}

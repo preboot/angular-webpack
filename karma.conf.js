@@ -1,12 +1,12 @@
-var path = require('path');
+const path = require('path');
 
-var webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.config');
 
-var ENV = process.env.npm_lifecycle_event;
-var isTestWatch = ENV === 'test-watch';
+const ENV = process.env.npm_lifecycle_event;
+let isTestWatch = ENV === 'test-watch';
 
 module.exports = function (config) {
-  var _config = {
+  const _config = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -17,7 +17,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: './karma-shim.js', watched: false }
+      {pattern: './karma-shim.js', watched: false}
     ],
 
     // list of files to exclude
