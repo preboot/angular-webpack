@@ -101,6 +101,17 @@ To build your application, run:
 
 You can now go to `/dist` and deploy that to your server!
 
+If you want to use service workers for your production build, run:
+
+* `npm run build-sw`
+
+You can also test your production build directly.
+`live-server` has to be installed globally before (`npm i -g live-server`):
+
+* `npm run build-sw-serve`
+
+
+
 ## Documentation
 
 You can generate api docs (using [TypeDoc](http://typedoc.org/)) for your code with the following:
