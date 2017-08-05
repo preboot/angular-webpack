@@ -8,7 +8,17 @@ if (process.env.ENV === 'build') {
 }
 
 export function main() {
-  return platformBrowserDynamic().bootstrapModule(AppModule);
+  return platformBrowserDynamic().bootstrapModule(AppModule)
+  // Checks if the browser supports service workers. If yes, it registers one.
+    .then(() => {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .then(registration => console.log('SW has been registered with scope: ',
+            registration.scope));
+      }
+    })
+    .catch(err => console.error(err));
 }
 
 if (document.readyState === 'complete') {
