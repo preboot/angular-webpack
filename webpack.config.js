@@ -35,7 +35,9 @@ module.exports = function makeWebpackConfig() {
     config.devtool = 'source-map';
   }
   else if (isTest) {
-    config.devtool = 'inline-source-map';
+    if(!isTestWatch) { // source maps slows down test-watch too much, so just keep source maps for 'single run' test
+      config.devtool = 'inline-source-map';
+    }
   }
   else {
     config.devtool = 'eval-source-map';
@@ -147,6 +149,7 @@ module.exports = function makeWebpackConfig() {
     config.module.rules.push({
       test: /\.ts$/,
       enforce: 'pre',
+      include: path.resolve('src'),
       loader: 'tslint-loader'
     });
   }
