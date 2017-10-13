@@ -149,6 +149,7 @@ module.exports = function makeWebpackConfig() {
     config.module.rules.push({
       test: /\.ts$/,
       enforce: 'pre',
+      include: path.resolve('src'),
       loader: 'tslint-loader'
     });
   }
